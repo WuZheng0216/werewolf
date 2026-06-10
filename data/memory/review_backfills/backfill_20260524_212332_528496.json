@@ -1,0 +1,80 @@
+{
+  "created_at": "20260524_212332_528496",
+  "run_file": "data\\memory\\evolution_runs\\run_20260524_185658_465152_evolved_r1.json",
+  "mode": "llm",
+  "fallback": "heuristic",
+  "dry_run": false,
+  "processed_count": 4,
+  "ok_count": 4,
+  "processed": [
+    {
+      "archive_path": "logs\\games\\20260524_174537_156836_game-20270521-82aedd.json",
+      "game_id": "game-20270521-82aedd",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 5,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_175818_920774_game-20270522-3a036d.json",
+      "game_id": "game-20270522-3a036d",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "llm",
+      "memory_candidate_count": 4,
+      "memory_bank_item_ids": [
+        "werewolf-2ffe9f95ca1f",
+        "seer-4bc672e4d6b3",
+        "witch-0c516bfa8b1d",
+        "villager-948e569b6788"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_181223_989146_game-20270523-3ff9be.json",
+      "game_id": "game-20270523-3ff9be",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 7,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "werewolf-8679dc35a72c",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd",
+        "werewolf-d2f1746ecece"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_185658_352050_game-20280523-1f94a3.json",
+      "game_id": "game-20280523-1f94a3",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 9,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "werewolf-8679dc35a72c",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "hunter-95fbe376c739",
+        "villager-5c22639a99cd",
+        "hunter-b71a221738c9",
+        "werewolf-d2f1746ecece"
+      ],
+      "error": null
+    }
+  ]
+}

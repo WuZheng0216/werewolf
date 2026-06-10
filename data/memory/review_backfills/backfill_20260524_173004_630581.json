@@ -1,0 +1,102 @@
+{
+  "created_at": "20260524_173004_629588",
+  "run_file": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+  "mode": "heuristic",
+  "fallback": "heuristic",
+  "dry_run": false,
+  "processed_count": 5,
+  "ok_count": 5,
+  "processed": [
+    {
+      "archive_path": "logs\\games\\20260524_124038_442045_game-20270522-e9be2b.json",
+      "game_id": "game-20270522-e9be2b",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 5,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_125723_545622_game-20270523-b2422c.json",
+      "game_id": "game-20270523-b2422c",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 9,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "werewolf-8679dc35a72c",
+        "seer-3cd8e26ab9ad",
+        "seer-9a3bd2894a9e",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd",
+        "seer-ff8cc0b382a2",
+        "werewolf-d2f1746ecece"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_131337_763705_game-20270524-4fde40.json",
+      "game_id": "game-20270524-4fde40",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 8,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "werewolf-8679dc35a72c",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd",
+        "werewolf-d2f1746ecece",
+        "werewolf-d2f1746ecece"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_134521_435108_game-20280521-25993e.json",
+      "game_id": "game-20280521-25993e",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 7,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "werewolf-8679dc35a72c",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd",
+        "werewolf-d2f1746ecece"
+      ],
+      "error": null
+    },
+    {
+      "archive_path": "logs\\games\\20260524_143815_711184_game-20280525-60f4b7.json",
+      "game_id": "game-20280525-60f4b7",
+      "previous_review_status": "failed",
+      "new_review_status": "ok",
+      "review_backend": "heuristic_backfill",
+      "memory_candidate_count": 7,
+      "memory_bank_item_ids": [
+        "werewolf-9dc9e9b178b4",
+        "seer-3cd8e26ab9ad",
+        "witch-6dc80c760a38",
+        "witch-e530a5c9c7d1",
+        "hunter-1094ad8980d3",
+        "villager-5c22639a99cd",
+        "witch-91ecd582d2d6"
+      ],
+      "error": null
+    }
+  ]
+}

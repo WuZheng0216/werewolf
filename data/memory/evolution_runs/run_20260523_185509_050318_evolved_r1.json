@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "kind": "evolution_run",
+  "created_at": "20260523_185509_050318",
+  "source": "backfill_from_existing_logs",
+  "final_version": "evolved_r1",
+  "history": [
+    {
+      "version_id": "initial",
+      "aggregate": {
+        "games": 29,
+        "average_scores": {
+          "mistake_penalty": 82.62,
+          "overall": 77.79,
+          "skill_quality": 77.99,
+          "speech_quality": 83.79,
+          "team_contribution": 71.96,
+          "vote_quality": 68.66
+        },
+        "winner_counts": {
+          "werewolves": 20,
+          "villagers": 9
+        },
+        "mistake_counts": {
+          "werewolf_exposed_pack_vote": 34,
+          "seer_failed_to_reveal_wolf": 20,
+          "witch_poisoned_good": 2
+        },
+        "recommendations": {
+          "werewolf": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+          ],
+          "seer": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。"
+          ],
+          "witch": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。"
+          ],
+          "hunter": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "villager": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ]
+        },
+        "mistakes_per_game": 1.93
+      },
+      "reflections": {
+        "werewolf": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+        ],
+        "seer": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。"
+        ],
+        "witch": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。"
+        ],
+        "hunter": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "villager": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ]
+      },
+      "memory_file": "data\\memory\\role_memory_initial.json",
+      "memory_snapshot": "data\\memory\\snapshots\\20260523_185509_043305_initial.json",
+      "completed_games": 29,
+      "promoted": true
+    },
+    {
+      "version_id": "evolved_r1",
+      "aggregate": {
+        "games": 25,
+        "average_scores": {
+          "mistake_penalty": 86.32,
+          "overall": 80.25,
+          "skill_quality": 80.17,
+          "speech_quality": 83.98,
+          "team_contribution": 74.45,
+          "vote_quality": 72.94
+        },
+        "winner_counts": {
+          "villagers": 14,
+          "werewolves": 11
+        },
+        "mistake_counts": {
+          "werewolf_exposed_pack_vote": 27,
+          "villager_ignored_confirmed_wolf": 5,
+          "hunter_shot_good": 1,
+          "witch_poisoned_good": 1,
+          "seer_failed_to_reveal_wolf": 4
+        },
+        "recommendations": {
+          "werewolf": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+          ],
+          "seer": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。"
+          ],
+          "witch": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。"
+          ],
+          "hunter": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。",
+            "开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+          ],
+          "villager": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。"
+          ]
+        },
+        "mistakes_per_game": 1.52
+      },
+      "reflections": {
+        "werewolf": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+        ],
+        "seer": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。"
+        ],
+        "witch": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。"
+        ],
+        "hunter": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。",
+          "反思：开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+        ],
+        "villager": [
+          "反思：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "反思：出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。"
+        ]
+      },
+      "memory_file": "data\\memory\\role_memory_evolved_r1.json",
+      "memory_snapshot": "data\\memory\\snapshots\\20260523_185509_047305_evolved_r1.json",
+      "completed_games": 25,
+      "promoted": true
+    }
+  ],
+  "memory_files": [
+    {
+      "version_id": "initial",
+      "latest_path": "data\\memory\\role_memory_initial.json",
+      "snapshot_path": "data\\memory\\snapshots\\20260523_185509_043305_initial.json"
+    },
+    {
+      "version_id": "evolved_r1",
+      "latest_path": "data\\memory\\role_memory_evolved_r1.json",
+      "snapshot_path": "data\\memory\\snapshots\\20260523_185509_047305_evolved_r1.json"
+    }
+  ],
+  "error_log_count": 9
+}

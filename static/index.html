@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Werewolf Arena</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="arena-shell">
+      <header class="arena-topbar">
+        <div>
+          <p class="eyebrow">Agent Teams Werewolf</p>
+          <h1>AI Werewolf Arena</h1>
+        </div>
+        <div class="controls">
+          <label>
+            <span>Version</span>
+            <select id="versionSelect">
+              <option value="latest">latest promoted</option>
+              <option value="initial">initial</option>
+              <option value="evolved">evolved</option>
+              <option value="evolved_r1">evolved_r1</option>
+              <option value="evolved_r2">evolved_r2</option>
+            </select>
+          </label>
+          <label>
+            <span>Model</span>
+            <select id="modelSelect">
+              <option value="dashscope-native|deepseek-v3.2">DeepSeek V3.2 Reasoning</option>
+              <option value="ark|">Doubao Seed 2.0 Pro</option>
+              <option value="dashscope|deepseek-v4-flash">DeepSeek V4 Flash</option>
+            </select>
+          </label>
+          <label>
+            <span>Seed</span>
+            <input id="seedInput" type="number" min="1" placeholder="random" />
+          </label>
+          <label>
+            <span>Mode</span>
+            <select id="playModeSelect">
+              <option value="observer">Observer</option>
+              <option value="human">Human Player</option>
+            </select>
+          </label>
+          <label>
+            <span>Your Seat</span>
+            <select id="humanSeatSelect">
+              <option value="1">P1</option>
+              <option value="2">P2</option>
+              <option value="3">P3</option>
+              <option value="4">P4</option>
+              <option value="5">P5</option>
+              <option value="6">P6</option>
+              <option value="7">P7</option>
+              <option value="8">P8</option>
+              <option value="9">P9</option>
+            </select>
+          </label>
+          <label>
+            <span>Base Memory</span>
+            <select id="baseMemorySelect">
+              <option value="latest">latest promoted</option>
+              <option value="initial">initial</option>
+              <option value="evolved">evolved</option>
+              <option value="evolved_r1">evolved_r1</option>
+              <option value="evolved_r2">evolved_r2</option>
+            </select>
+          </label>
+          <label>
+            <span>Evo Mode</span>
+            <select id="evolutionModeSelect">
+              <option value="workflow">Workflow Memory</option>
+              <option value="skill">Agent Skill Evolution</option>
+            </select>
+          </label>
+          <label>
+            <span>Evo Rounds</span>
+            <input id="evoRoundsInput" type="number" min="1" max="4" value="1" />
+          </label>
+          <label>
+            <span>Games / Round</span>
+            <input id="evoGamesInput" type="number" min="1" max="50" value="3" />
+          </label>
+          <label>
+            <span>AB Games</span>
+            <input id="abGamesInput" type="number" min="1" max="50" value="6" />
+          </label>
+          <button id="runGameBtn">New Game</button>
+          <button id="runEvolutionBtn">Auto Evolve</button>
+          <button id="runFrozenEvalBtn">Frozen Eval</button>
+          <button id="runAbBtn">AB</button>
+        </div>
+      </header>
+
+      <section class="hud-strip" id="summaryBand"></section>
+
+      <section class="game-layout">
+        <section class="stage-card">
+          <div class="stage-toolbar">
+            <div>
+              <span id="phasePill" class="phase-pill">Waiting</span>
+              <span id="winnerPill" class="winner-pill">No game</span>
+            </div>
+            <div class="playback-controls">
+              <button id="prevEventBtn" title="Previous event">Prev</button>
+              <button id="playPauseBtn" class="primary">Play</button>
+              <button id="nextEventBtn" title="Next event">Next</button>
+              <select id="speedSelect" title="Playback speed">
+                <option value="2200">1x</option>
+                <option value="1200">2x</option>
+                <option value="650">4x</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="gameStage" class="game-stage">
+            <div class="table-glow"></div>
+            <div class="round-table">
+              <div class="table-core">
+                <div id="coreIcon" class="core-icon">☾</div>
+                <div id="corePhase" class="core-phase">Night</div>
+                <div id="coreEvent" class="core-event">Run a game to start replay.</div>
+                <div id="coreResult" class="core-result"></div>
+              </div>
+            </div>
+            <div id="seatLayer" class="seat-layer"></div>
+          </div>
+
+          <div class="event-slider-row">
+            <span id="eventCounter">0 / 0</span>
+            <input id="eventSlider" type="range" min="0" max="0" value="0" />
+          </div>
+        </section>
+
+        <aside class="side-card">
+          <div class="section-head">
+            <h2>Live Feed</h2>
+            <div class="segmented" role="tablist">
+              <button class="active" data-filter="all">All</button>
+              <button data-filter="public">Public</button>
+              <button data-filter="hidden">Night</button>
+            </div>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </aside>
+      </section>
+
+      <section class="below-grid">
+        <section class="panel human-panel" id="humanPanel">
+          <div class="section-head">
+            <h2>Human Turn</h2>
+            <span class="pill muted" id="humanPill">Observer mode</span>
+          </div>
+          <div id="humanPrompt" class="human-prompt">
+            <div class="list-item">切换到 Human Player 后，你会以所选座位进入对局；直播过程中只显示你的私有视角，终局后再复盘完整日志。</div>
+          </div>
+        </section>
+
+        <section class="panel report-panel">
+          <div class="section-head">
+            <h2>Review Scores</h2>
+            <div class="pill-row">
+              <span class="pill muted" id="versionPill">initial</span>
+              <span class="pill muted" id="archivePill">Log pending</span>
+            </div>
+          </div>
+          <div id="scoreBars" class="score-list"></div>
+          <div class="split-list">
+            <div>
+              <h3>Key Mistakes</h3>
+              <div id="mistakeList" class="compact-list"></div>
+            </div>
+            <div>
+              <h3>Memory / LLM Review</h3>
+              <div id="memoryList" class="compact-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel analytics-panel">
+          <div class="section-head">
+            <h2>Evolution / Leaderboard</h2>
+            <span class="pill muted" id="abPill">Not run</span>
+          </div>
+          <div id="abResult" class="metric-grid small"></div>
+          <div id="leaderboard" class="leaderboard"></div>
+        </section>
+
+        <section class="panel io-panel">
+          <div class="section-head">
+            <h2>Agent I/O Debug</h2>
+            <label class="compact-select">
+              <span>Seat</span>
+              <select id="ioPlayerSelect">
+                <option value="all">All</option>
+              </select>
+            </label>
+          </div>
+          <div id="ioDebug" class="io-debug"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

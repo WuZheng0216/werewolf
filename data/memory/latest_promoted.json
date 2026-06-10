@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "latest_promoted",
+  "created_at": "20260607_224559_854744",
+  "version_id": "evolved_skill_r12_v2",
+  "memory_file": "data\\memory\\role_memory_evolved_skill_r12_v2.json",
+  "snapshot_path": "data\\memory\\snapshots\\20260607_200652_348804_evolved_skill_r12_v2.json",
+  "run_file": "data\\memory\\evolution_runs\\run_20260607_224559_821058_evolved_skill_r12_v2.json",
+  "base_version": "evolved_skill_r10_v6",
+  "llm_provider": "ark",
+  "llm_model": null,
+  "metrics": {
+    "games": 3,
+    "average_scores": {
+      "mistake_penalty": 94.0,
+      "overall": 83.18,
+      "skill_quality": 79.19,
+      "social_influence_quality": 77.83,
+      "speech_quality": 86.11,
+      "team_contribution": 73.8,
+      "vote_quality": 72.87,
+      "wolf_deception_diversity": 100.0,
+      "wolf_deception_quality": 96.67
+    },
+    "winner_counts": {
+      "werewolves": 2,
+      "villagers": 1
+    },
+    "mistake_counts": {
+      "witch_mechanical_n1_save": 1,
+      "werewolf_exposed_pack_vote": 1
+    },
+    "recommendations": {
+      "witch": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。",
+        "女巫首夜救人不是固定动作；非自救时应比较被刀目标价值、保留解药保护关键神职的收益，以及后续轮次风险。"
+      ],
+      "werewolf": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。",
+        "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+      ],
+      "seer": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "hunter": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "villager": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ]
+    },
+    "mistakes_per_game": 0.67
+  }
+}

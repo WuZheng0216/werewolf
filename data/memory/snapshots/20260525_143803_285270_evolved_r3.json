@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "kind": "role_memory_snapshot",
+  "created_at": "20260525_143803_285270",
+  "version_id": "evolved_r3",
+  "parent_id": "evolved_r2",
+  "promoted": false,
+  "round_index": 1,
+  "llm_provider": "ark",
+  "llm_model": null,
+  "metrics": {
+    "games": 2,
+    "average_scores": {
+      "mistake_penalty": 91.0,
+      "overall": 78.02,
+      "skill_quality": 78.85,
+      "speech_quality": 78.56,
+      "team_contribution": 71.59,
+      "vote_quality": 65.92
+    },
+    "winner_counts": {
+      "werewolves": 1,
+      "villagers": 1
+    },
+    "mistake_counts": {
+      "werewolf_exposed_pack_vote": 2
+    },
+    "recommendations": {
+      "werewolf": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。",
+        "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+      ],
+      "seer": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "witch": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "hunter": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "villager": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ]
+    },
+    "mistakes_per_game": 1.0
+  },
+  "source_games": [
+    "logs\\games\\20260525_140748_579659_game-20290522-34a2d7.json",
+    "logs\\games\\20260525_142457_791636_game-20290523-1f38b5.json"
+  ],
+  "errors": [
+    {
+      "version_id": "evolved_r3",
+      "game_index": 0,
+      "games_requested": 10,
+      "seed": 20290521,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "RemoteDisconnected",
+      "message": "Remote end closed connection without response",
+      "archive_path": "logs\\games\\20260525_135324_495287_error_evolved_r3_0.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 3,
+      "games_requested": 10,
+      "seed": 20290524,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 021779691145772d54a2e8b6146550b9b78e5e06cf50b229b6904\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143733_835371_error_evolved_r3_3.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 4,
+      "games_requested": 10,
+      "seed": 20290525,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 021779691150728d54a2e8b6146550b9b78e5e06cf50b2278e5ff\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143738_791845_error_evolved_r3_4.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 5,
+      "games_requested": 10,
+      "seed": 20290526,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 021779691155615bd223177cc7b14585a4ccdb5490e4938585c6b\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143743_674131_error_evolved_r3_5.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 6,
+      "games_requested": 10,
+      "seed": 20290527,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 0217796911605019a3c11ce9bc6e339bff18e6a11feba8bca956e\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143748_562334_error_evolved_r3_6.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 7,
+      "games_requested": 10,
+      "seed": 20290528,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 021779691165424a1b170fc911988aa69fdfa08a353ab2718f72d\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143753_487163_error_evolved_r3_7.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 8,
+      "games_requested": 10,
+      "seed": 20290529,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 021779691170320336c0ccc8833e375a271994f02c20b095cb674\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143758_381477_error_evolved_r3_8.json"
+    },
+    {
+      "version_id": "evolved_r3",
+      "game_index": 9,
+      "games_requested": 10,
+      "seed": 20290530,
+      "seed_offset": 30000,
+      "agent_backend": "llm",
+      "llm_provider": "ark",
+      "llm_model": null,
+      "error": "LLMError",
+      "message": "ark HTTP 401: {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key doesn't exist. Request id: 0217796911752159a3c11ce9bc6e339bff18e6a11feba8bb56b03\",\"param\":\"\",\"type\":\"Unauthorized\"}}",
+      "archive_path": "logs\\games\\20260525_143803_282254_error_evolved_r3_9.json"
+    }
+  ],
+  "reflections": {
+    "werewolf": [
+      "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。",
+      "规则复盘：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+    ],
+    "seer": [
+      "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+    ],
+    "witch": [
+      "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+    ],
+    "hunter": [
+      "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+    ],
+    "villager": [
+      "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+    ]
+  },
+  "llm_reviews": [
+    {
+      "review_status": "failed",
+      "error": "JSONDecodeError",
+      "message": "Expecting ',' delimiter: line 84 column 10 (char 3093)",
+      "metadata": {
+        "review_backend": "llm",
+        "llm_provider": "ark",
+        "llm_model": "ep-20260514115354-k4jz4",
+        "llm_timeout_seconds": 180.0,
+        "llm_max_retries": 2
+      }
+    },
+    {
+      "review_status": "failed",
+      "error": "JSONDecodeError",
+      "message": "Expecting ',' delimiter: line 95 column 10 (char 3271)",
+      "metadata": {
+        "review_backend": "llm",
+        "llm_provider": "ark",
+        "llm_model": "ep-20260514115354-k4jz4",
+        "llm_timeout_seconds": 180.0,
+        "llm_max_retries": 2
+      }
+    }
+  ],
+  "role_memories": {
+    "werewolf": {
+      "role": "werewolf",
+      "role_zh": "狼人",
+      "version_id": "evolved_r3",
+      "parent_id": "evolved_r2",
+      "prompt_name": "wolf_shadow_v2",
+      "prompt_summary": "进化版：进化版：进化版：伪装成谨慎好人，寻找神职，但早期偶尔跟票过重。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "白天不要直接暴露狼队视角。",
+        "优先攻击发言强势、可能带队的好人。",
+        "早期投票避免三狼集中裸冲同一好人；理由不足时可以分票、弃票、轻踩队友或选择另一个公开可疑目标。",
+        "狼队白天不要三狼集中裸冲同一个目标，除非已有公开理由。",
+        "夜晚优先处理公开跳预言家、强势归票者和被普遍信任的好人。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。",
+        "上帝视角复盘：狼人阵营投票时应避免多狼无合理逻辑集中冲票无对跳的明神职，防止票型暴露狼队协同身份",
+        "上帝视角复盘：狼人投票应尽量给出独立合理的逻辑支撑，避免多狼无理由共票，否则会通过票型暴露狼队共边关系",
+        "上帝视角复盘：狼人早期投票阶段应避免多狼无合理逻辑统一冲票同一高好人面目标，防止票型暴露狼队共边关系",
+        "上帝视角复盘：狼人被预言家查杀时，应优先悍跳预言家混淆好人视角，避免直接暴露身份或让队友为自己出头导致狼队集体暴露。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "wolf_bluffing_and_pack_vote_discipline",
+        "last_reviewed_mistakes": 16
+      },
+      "metrics": {},
+      "promoted": false
+    },
+    "seer": {
+      "role": "seer",
+      "role_zh": "预言家",
+      "version_id": "evolved_r3",
+      "parent_id": "evolved_r2",
+      "prompt_name": "seer_cautious_v2",
+      "prompt_summary": "进化版：进化版：进化版：重视隐藏身份，但查到狼后有时披露不足。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "前两天先积累查验信息，不要过早暴露。",
+        "发言中可以给出轻微站边，但不要把全部信息一次交出。",
+        "查到狼人后必须在白天明确报出查杀并带票。",
+        "如果已有金水，要用金水建立可信站边，不要只给模糊判断。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。",
+        "上帝视角复盘：预言家拿到狼人查杀结果时应及时起跳公开查验信息，同步后续查验计划，统一好人投票方向，提高好人阵营信息透明度",
+        "上帝视角复盘：预言家首日白天应及时公开身份、已查验结果及后续查验计划，帮助好人快速统一排狼视角",
+        "上帝视角复盘：预言家首日起跳时需完整公开查验结果、后续查验计划及明确归票建议，避免因发言漏洞被狼人抗推",
+        "上帝视角复盘：无对跳预言家的情况下，首日获得查杀信息应果断起跳，公开查验结果并公布后续查验计划，统一好人投票方向。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "inspection_disclosure_and_vote_leadership",
+        "last_reviewed_mistakes": 16
+      },
+      "metrics": {},
+      "promoted": false
+    },
+    "witch": {
+      "role": "witch",
+      "role_zh": "女巫",
+      "version_id": "evolved_r3",
+      "parent_id": "evolved_r2",
+      "prompt_name": "witch_conservative_v2",
+      "prompt_summary": "进化版：进化版：进化版：药水使用保守，毒药偶尔被情绪票影响。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "解药尽量留到关键轮次。",
+        "毒药需要结合发言和投票，不要只凭单点怀疑。",
+        "首夜优先救人以保留轮次。",
+        "毒药只优先给公开查杀或多轮高嫌疑目标，避免毒死强好人。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。",
+        "上帝视角复盘：女巫首夜优先使用解药保住好人轮次，自身夜间被刀且有明确高嫌疑目标时可果断使用毒药避免狼队获胜",
+        "上帝视角复盘：神职玩家公开声称有身份时，应尽量提供符合公开逻辑的佐证，避免身份过于模糊被好人误投",
+        "上帝视角复盘：女巫首夜被刀时优先使用解药自救保留神职轮次，确认自身即将出局时优先毒杀有明确行为嫌疑（如冲票唯一无对跳预言家）的玩家，最大化技能价值",
+        "上帝视角复盘：首夜优先使用解药避免好人损失轮次，毒药在有明确高嫌疑狼的硬证据时使用，若夜间被刀无法自救则果断用毒药毒杀最高嫌疑狼。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "medicine_timing_and_poison_discipline",
+        "last_reviewed_mistakes": 16
+      },
+      "metrics": {},
+      "promoted": false
+    },
+    "hunter": {
+      "role": "hunter",
+      "role_zh": "猎人",
+      "version_id": "evolved_r3",
+      "parent_id": "evolved_r2",
+      "prompt_name": "hunter_patient_v2",
+      "prompt_summary": "进化版：进化版：进化版：倾向藏身份，开枪时容易保守。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "死亡时如果没有强逻辑，可以不开枪避免误伤。",
+        "发言以普通好人视角分析局势。",
+        "死亡开枪时优先带走公开查杀或投票链最高嫌疑。",
+        "白天发言跟随可信预言家信息，不做无依据反打。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。",
+        "上帝视角复盘：猎人被全场重点怀疑时可公开身份自证，避免被好人抗推损失轮次",
+        "上帝视角复盘：猎人死亡发动技能时，可优先选择历史票型与已出局高嫌疑玩家高度重合的目标开枪"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "shot_selection_from_public_evidence",
+        "last_reviewed_mistakes": 16
+      },
+      "metrics": {},
+      "promoted": false
+    },
+    "villager": {
+      "role": "villager",
+      "role_zh": "村民",
+      "version_id": "evolved_r3",
+      "parent_id": "evolved_r2",
+      "prompt_name": "villager_basic_v2",
+      "prompt_summary": "进化版：进化版：进化版：根据公开发言投票，但归票能力不足。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "没有技能信息，只根据公开发言、投票和死亡信息推理。",
+        "不要假装拥有夜间信息。",
+        "出现明确查杀时优先围绕查杀归票。",
+        "用投票链和发言矛盾识别狼人，不做纯随机票。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "上帝视角复盘：普通村民前期可主动引导其他玩家输出有效信息，压缩狼队划水伪装的生存空间",
+        "上帝视角复盘：村民可通过统计公开跳民人数与本局村民总配置的差值，快速识别穿民衣伪装的狼人，缩小排狼范围",
+        "上帝视角复盘：普通村民无需仅依赖神职带队，可主动梳理公开信息、引导好人发言和投票方向，提升好人阵营决策效率",
+        "上帝视角复盘：好人可基于公开投票记录、夜间死亡信息锁定异常票型的高嫌疑玩家，引导好人统一归票。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "public_reasoning_and_vote_coordination",
+        "last_reviewed_mistakes": 16
+      },
+      "metrics": {},
+      "promoted": false
+    }
+  }
+}

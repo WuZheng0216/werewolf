@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "kind": "skill_change_log",
+  "entries": [
+    {
+      "change_id": "codex_skill_pack_vote_r1_change_1",
+      "recorded_at": "20260609_010100",
+      "status": "candidate",
+      "decision": "pending_frozen_eval",
+      "version_id": "codex_skill_pack_vote_r1",
+      "parent_id": "evolved_skill_r12_v2",
+      "candidate_file": "data/memory/role_memory_codex_skill_pack_vote_r1.json",
+      "target_failure_pattern": "werewolf_exposed_pack_vote",
+      "rationale": "Codex review found that the latest promoted werewolf skills still expose pack coordination through repeated same-target day votes. The issue is not a missing skill card; it is unstable recall plus insufficient behavioral effect when the card is recalled.",
+      "evidence": [
+        {
+          "source": "logs/games/20260609_003432_559731_game-20340521-02b356.json",
+          "seed": 20340521,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 72.91,
+            "vote_quality": 60.0,
+            "wolf_deception_quality": 62.0
+          },
+          "mistakes": {
+            "werewolf_exposed_pack_vote": 2
+          },
+          "observations": [
+            "D1: P7, P8, and P9 all voted P3.",
+            "D2: P7, P8, and P9 all voted P5.",
+            "Only part of the wolf team recalled the vote-splitting skill; even recalled instances did not reliably change the vote."
+          ]
+        },
+        {
+          "source": "logs/games/20260609_005407_848381_game-20340522-01d803.json",
+          "seed": 20340522,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 84.23,
+            "vote_quality": 65.08,
+            "wolf_deception_quality": 100.0
+          },
+          "mistakes": {},
+          "observations": [
+            "D1: two wolves passed while one wolf voted P2.",
+            "D2: wolf votes split across P6, P3, and pass.",
+            "This provides a useful contrast case: split or lower-commitment votes can avoid the pack-vote mistake while preserving wolf win potential."
+          ]
+        },
+        {
+          "source": "logs/games/20260609_045457_381916_game-20340523-2c5e63.json",
+          "seed": 20340523,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 73.98,
+            "vote_quality": 60.21,
+            "wolf_deception_quality": 74.0
+          },
+          "mistakes": {
+            "werewolf_exposed_pack_vote": 2,
+            "werewolf_template_speech": 1
+          },
+          "observations": [
+            "D1: P7, P8, and P9 all voted P5 with similar public reasoning.",
+            "D2: P7, P8, and P9 all voted P3 after following the fake seer chain.",
+            "D3: P7, P8, and P9 all voted P2; P7 and P9 recalled the vote-splitting skill, but the team still formed a full same-target vote.",
+            "This supports the diagnosis that the old skill has both recall instability and weak execution pressure."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "operation": "refine_skill",
+          "role": "werewolf",
+          "from_skill_id": "werewolf_skill_53608c4baf_v3",
+          "to_skill_id": "werewolf_skill_53608c4baf_v4_codex",
+          "title": "狼队投票分线",
+          "what_changed": [
+            "Changed the trigger into an explicit pre-vote exposure check.",
+            "Made strong-public-evidence exceptions explicit so the agent remains autonomous and can still coordinate when justified.",
+            "Added medium/weak evidence side-line options: bus, pass, alternate public suspect, light teammate questioning, or secondary pressure.",
+            "Required distinct public event chains and compatibility with seat persona and prior commitments.",
+            "Required public-history-only explanations and banned invented events or leaked wolf coordination."
+          ],
+          "why": "The goal is to make the model compare exile value against pack-exposure cost before voting, not to hard-code a fixed split-vote policy."
+        },
+        {
+          "operation": "retire_duplicate_active_skills",
+          "role": "werewolf",
+          "retired_skill_ids": [
+            "werewolf_strategist_skill_f24d3ee642",
+            "werewolf_strategist_skill_7f1da6b03e"
+          ],
+          "why": "Duplicate same-title vote-splitting cards consumed prompt budget and may have diluted recall; the candidate keeps one clearer active decision tool."
+        }
+      ],
+      "validation": [
+        {
+          "type": "load_check",
+          "command": "python - << check load_role_memory_profiles('codex_skill_pack_vote_r1') >>",
+          "result": "passed",
+          "notes": "Candidate loads with 5 werewolf skills and does not update latest_promoted.json."
+        },
+        {
+          "type": "unit_tests",
+          "command": "python -m unittest discover -s tests -p \"test_codex_skill_lab*.py\" -v",
+          "result": "passed",
+          "notes": "Codex Skill Lab sampling and progress-summary tests pass."
+        }
+      ],
+      "next_steps": [
+        "Wait until the current Doubao sampling job is idle or completed to avoid 429 contention.",
+        "Run frozen eval: python scripts/run_demo.py frozen-eval --version codex_skill_pack_vote_r1 --baseline-version evolved_skill_r12_v2 --games 1 --llm-provider ark",
+        "Accept only if werewolf_exposed_pack_vote decreases and overall/vote/team metrics do not regress materially."
+      ]
+    },
+    {
+      "change_id": "codex_skill_pack_vote_r2_change_1",
+      "status": "candidate",
+      "decision": "revise_to_r3",
+      "version_id": "codex_skill_pack_vote_r2",
+      "parent_id": "codex_skill_pack_vote_r1",
+      "candidate_file": "data/memory/role_memory_codex_skill_pack_vote_r2.json",
+      "target_failure_pattern": "werewolf_exposed_pack_vote",
+      "rationale": "The completed 5-game Doubao sample showed that simultaneous voting makes the old exposure skill under-specified: wolves cannot see current teammate votes, and even when the old vote-splitting skill was recalled, they still formed same-target votes. R2 refines the skill to infer teammate vote risk from private day plans, public commitments, previous vote patterns, and the agent's own pending vote.",
+      "evidence": [
+        {
+          "source": "logs/games/20260609_045457_381916_game-20340523-2c5e63.json",
+          "seed": 20340523,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 73.98,
+            "vote_quality": 60.21,
+            "wolf_deception_quality": 74.0
+          },
+          "mistakes": {
+            "werewolf_exposed_pack_vote": 2,
+            "werewolf_template_speech": 1
+          },
+          "observations": [
+            "D1/D2/D3 all produced full same-target wolf votes.",
+            "Several votes recalled werewolf_skill_53608c4baf_v3, but the team still did not avoid same-target pack exposure.",
+            "This suggests the skill needs explicit simultaneous-vote intent prediction, not just post-hoc vote splitting advice."
+          ]
+        },
+        {
+          "source": "logs/games/20260609_051335_137143_game-20340524-d5e653.json",
+          "seed": 20340524,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 79.36,
+            "vote_quality": 63.2,
+            "wolf_deception_quality": 100.0
+          },
+          "mistakes": {
+            "werewolf_exposed_pack_vote": 1
+          },
+          "observations": [
+            "D1 is a positive contrast: P2 voted P6, P3 passed, and P9 voted P5; all three recalled the old vote-splitting skill.",
+            "D2 still produced a flagged same-target wolf vote: P3 and P9 both voted P4 with similar public reasoning.",
+            "This suggests the skill can help in some cases, but needs stronger persistence across later rounds and remaining-wolf scenarios."
+          ]
+        },
+        {
+          "source": "logs/games/20260609_054342_689373_game-20340526-f4858b.json",
+          "seed": 20340526,
+          "winner": "werewolves",
+          "scores": {
+            "overall": 72.3,
+            "vote_quality": 65.5,
+            "wolf_deception_quality": 76.0
+          },
+          "mistakes": {
+            "werewolf_exposed_pack_vote": 2,
+            "seer_mechanical_day1_claim": 1
+          },
+          "observations": [
+            "D1: P2 and P6 both voted P5, while P9 passed; the evaluator still flagged a pack-vote exposure risk.",
+            "D2: P2, P6, and P9 all voted P7 with similar public reasoning.",
+            "All three D2 werewolf votes recalled werewolf_skill_53608c4baf_v3, but the skill did not prevent a full same-target vote.",
+            "This is direct support for R2: the issue is weak execution under simultaneous voting, not merely missing skill availability."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "operation": "refine_skill",
+          "role": "werewolf",
+          "from_skill_id": "werewolf_skill_53608c4baf_v4_codex",
+          "to_skill_id": "werewolf_skill_53608c4baf_v5_codex",
+          "title": "狼队投票分线",
+          "what_changed": [
+            "Expanded trigger from direct same-target risk to inferred same-target risk under simultaneous voting.",
+            "Added a first step to infer teammate vote direction from wolf private day plan, public speech commitments, prior vote patterns, and role persona.",
+            "Added an avoid clause: do not pretend to have seen current-round teammate votes; infer only from allowed evidence.",
+            "Kept the skill as a decision tool with strong-evidence exceptions, not a forced split-vote policy."
+          ],
+          "why": "This keeps agent autonomy while making the skill compatible with the project rule that day votes are simultaneous."
+        }
+      ],
+      "validation": [
+        {
+          "type": "load_check",
+          "command": "load_role_memory_profiles('codex_skill_pack_vote_r2')",
+          "result": "passed",
+          "notes": "R2 loads for all five roles; werewolf main vote skill is v5 with parent v4."
+        },
+        {
+          "type": "scheduled_frozen_eval",
+          "result": "pending",
+          "depends_on_pid": 20952,
+          "command": "python scripts/run_frozen_eval_job.py --version codex_skill_pack_vote_r2 --baseline-version evolved_skill_r12_v2 --games 1 --llm-provider ark --output-dir logs/frozen_eval_smoke/r2_after_batch_20260609_001441 --internal-llm-retries 1",
+          "output_dir": "logs/frozen_eval_smoke/r2_after_batch_20260609_001441",
+          "notes": "Scheduled by Codex watcher after the active Doubao sampling process exits, then waits 180 seconds before starting frozen eval to reduce endpoint contention and 429 amplification.",
+          "watcher_pid": 16572,
+          "post_sampling_cooldown_seconds": 180
+        },
+        {
+          "type": "frozen_eval_smoke",
+          "result": "partial_pass_revise",
+          "result_path": "logs/frozen_eval_smoke/r2_after_batch_20260609_001441/20260609_054643_163242_frozen_eval_result.json",
+          "candidate_archive": "logs/games/20260609_060226_282885_game-20320521-aabb44.json",
+          "baseline_archive": "logs/games/20260609_061722_770467_game-20320521-cac593.json",
+          "metrics": {
+            "candidate_overall": 75.92,
+            "baseline_overall": 75.0,
+            "candidate_werewolf_exposed_pack_vote": 1,
+            "baseline_werewolf_exposed_pack_vote": 2,
+            "candidate_vote_quality": 48.57,
+            "baseline_vote_quality": 52.0,
+            "candidate_wolf_deception_quality": 92.0,
+            "baseline_wolf_deception_quality": 74.0,
+            "delta_overall": 0.92,
+            "delta_mistakes_per_game": -1.0
+          },
+          "observations": [
+            "Candidate D1: all three werewolves recalled werewolf_skill_53608c4baf_v5_codex and passed, avoiding the baseline D1 three-wolf same-target vote.",
+            "Candidate D2: all three werewolves recalled v5 but still voted P4, leaving one werewolf_exposed_pack_vote mistake.",
+            "Baseline D1: P5, P7, and P9 all voted P3; target mistake count was higher.",
+            "Decision: do not promote r2 yet; create r3 to add cross-day persistence and repeated-narrative risk checks."
+          ]
+        }
+      ],
+      "next_steps": [
+        "Evaluate codex_skill_pack_vote_r3 against evolved_skill_r12_v2 with games=1 smoke test.",
+        "If r3 keeps the D1 improvement and removes the D2 recurrence, expand to games=3-5.",
+        "Do not promote r2 because it still produced D2 same-target wolf voting after recalling v5."
+      ],
+      "recorded_at": "20260609_051456"
+    },
+    {
+      "change_id": "codex_skill_pack_vote_r3_change_1",
+      "recorded_at": "20260609_062304",
+      "status": "candidate",
+      "decision": "expanded_eval_needs_revision_review",
+      "version_id": "codex_skill_pack_vote_r3",
+      "parent_id": "codex_skill_pack_vote_r2",
+      "candidate_file": "data/memory/role_memory_codex_skill_pack_vote_r3.json",
+      "target_failure_pattern": "werewolf_exposed_pack_vote",
+      "rationale": "R2 reduced D1 pack-vote exposure in smoke eval, but D2 still produced three-wolf same-target voting after v5 was recalled. R3 keeps the autonomous vote-exposure check and adds cross-day persistence plus repeated-narrative risk checks.",
+      "evidence": [
+        {
+          "source": "logs/frozen_eval_smoke/r2_after_batch_20260609_001441/20260609_054643_163242_frozen_eval_result.json",
+          "candidate_version": "codex_skill_pack_vote_r2",
+          "baseline_version": "evolved_skill_r12_v2",
+          "seed": 20320521,
+          "metrics": {
+            "candidate_overall": 75.92,
+            "baseline_overall": 75.0,
+            "candidate_pack_vote_mistakes": 1,
+            "baseline_pack_vote_mistakes": 2,
+            "candidate_vote_quality": 48.57,
+            "baseline_vote_quality": 52.0
+          },
+          "observations": [
+            "R2 D1: three werewolves recalled v5 and passed, avoiding same-target exposure.",
+            "R2 D2: three werewolves recalled v5 and still all voted P4.",
+            "Baseline D1: three werewolves all voted P3.",
+            "The remaining gap is persistence across later day votes, not initial recall availability."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "operation": "refine_skill",
+          "role": "werewolf",
+          "from_skill_id": "werewolf_skill_53608c4baf_v5_codex",
+          "to_skill_id": "werewolf_skill_53608c4baf_v6_codex",
+          "title": "狼队跨日投票分线",
+          "what_changed": [
+            "Trigger now fires before every day vote, including D2/D3 and PK revotes.",
+            "Added cross-day repeated target/narrative risk checks.",
+            "Added explicit distinction between target suspicion and multi-wolf same-target safety.",
+            "Added avoid clause for skipping the check after a successful D1 split/pass."
+          ],
+          "why": "The r2 smoke eval showed D1 improvement but D2 recurrence; r3 targets that narrow recurrence without hard-coding a fixed wolf vote."
+        }
+      ],
+      "validation": [
+        {
+          "type": "load_check",
+          "command": "get_profiles('codex_skill_pack_vote_r3')",
+          "result": "passed",
+          "notes": "R3 loads for all five roles; werewolf main vote skill is v6 with parent v5."
+        },
+        {
+          "type": "frozen_eval_smoke_scheduled",
+          "command": "python scripts/run_frozen_eval_job.py --version codex_skill_pack_vote_r3 --baseline-version evolved_skill_r12_v2 --games 1 --llm-provider ark --output-dir logs/frozen_eval_smoke/r3_vs_baseline_20260609 --internal-llm-retries 1",
+          "watcher_pid": 16488,
+          "cooldown_seconds": 180,
+          "output_dir": "logs/frozen_eval_smoke/r3_vs_baseline_20260609",
+          "baseline_version": "evolved_skill_r12_v2",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "result": "scheduled",
+          "notes": "Smoke frozen eval was scheduled after a cooldown to reduce shared Ark endpoint TPM pressure. It tests whether r3 reduces D2/D3 repeated wolf pack-vote exposure without promoting the candidate."
+        },
+        {
+          "type": "frozen_eval_smoke",
+          "result": "inconclusive_retest_required",
+          "output_dir": "logs/frozen_eval_smoke/r3_vs_baseline_20260609",
+          "result_path": "logs/frozen_eval_smoke/r3_vs_baseline_20260609/20260609_062950_235561_frozen_eval_result.json",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "candidate_completed_seed": 20320522,
+          "baseline_completed_seed": 20320521,
+          "candidate_overall": 78.51,
+          "baseline_overall": 85.72,
+          "candidate_mistakes_per_game": 3.0,
+          "baseline_mistakes_per_game": 1.0,
+          "candidate_pack_vote_mistakes": 1,
+          "baseline_pack_vote_mistakes": 0,
+          "candidate_vote_quality": 65.71,
+          "baseline_vote_quality": 84.31,
+          "candidate_winner": "werewolves",
+          "baseline_winner": "villagers",
+          "errors": [
+            {
+              "side": "candidate",
+              "seed": 20320521,
+              "error": "LLMError 429 EndpointTPMExceeded",
+              "archive_path": "logs/games/20260609_065048_514280_error_codex_skill_pack_vote_r3_0.json"
+            }
+          ],
+          "observations": [
+            "The run cannot be used as a strict A/B comparison because candidate retried from seed 20320521 to 20320522 after a 429, while baseline completed seed 20320521.",
+            "Candidate still had one werewolf_exposed_pack_vote and worse overall/vote-quality metrics in this smoke run.",
+            "Candidate D2 showed some wolf vote splitting, but the aggregate did not support promotion.",
+            "Frozen eval seed alignment has been fixed in code so future baseline runs use candidate completed seeds."
+          ]
+        },
+        {
+          "type": "seed_aligned_frozen_eval_scheduled",
+          "result": "scheduled",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "watcher_pid": 8860,
+          "cooldown_seconds": 300,
+          "output_dir": "logs/frozen_eval_smoke/r3_seed_aligned_20260609",
+          "command": "python scripts/run_frozen_eval_job.py --version codex_skill_pack_vote_r3 --baseline-version evolved_skill_r12_v2 --games 1 --llm-provider ark --output-dir logs/frozen_eval_smoke/r3_seed_aligned_20260609 --internal-llm-retries 1",
+          "notes": "Runs after the seed-alignment fix. Baseline should now use candidate completed seeds, including candidate retry seeds after rate-limit failures."
+        },
+        {
+          "type": "seed_aligned_frozen_eval_smoke",
+          "result": "partial_pass_expand_sample",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "result_path": "logs/frozen_eval_smoke/r3_seed_aligned_20260609/20260609_074317_824810_frozen_eval_result.json",
+          "candidate_completed_seeds": [
+            20320521
+          ],
+          "baseline_completed_seeds": [
+            20320521
+          ],
+          "candidate_overall": 79.39,
+          "baseline_overall": 65.34,
+          "delta_overall": 14.05,
+          "candidate_mistakes_per_game": 2.0,
+          "baseline_mistakes_per_game": 10.0,
+          "delta_mistakes_per_game": -8.0,
+          "candidate_pack_vote_mistakes": 1,
+          "baseline_pack_vote_mistakes": 2,
+          "candidate_vote_quality": 52.0,
+          "baseline_vote_quality": 47.57,
+          "candidate_wolf_deception_quality": 100.0,
+          "baseline_wolf_deception_quality": 86.0,
+          "candidate_winner": "werewolves",
+          "baseline_winner": "werewolves",
+          "errors": [],
+          "notes": [
+            "Seed alignment was successful: candidate and baseline both completed seed 20320521.",
+            "R3 reduced the target pack-vote mistake from 2 to 1 and improved overall score in this smoke sample.",
+            "R3 still has one werewolf_exposed_pack_vote, so it is not promoted from a single game.",
+            "Next evidence step should be a low-frequency 3-5 game seed-aligned frozen eval, run after API cooldown and reviewed from aggregate artifacts only."
+          ]
+        },
+        {
+          "type": "seed_aligned_frozen_eval_expand_scheduled",
+          "result": "running",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "games": 3,
+          "watcher_pid": 20252,
+          "python_pid": 3324,
+          "cooldown_seconds": 600,
+          "output_dir": "logs/frozen_eval_smoke/r3_seed_aligned_expand_20260609",
+          "command": "python scripts/run_frozen_eval_job.py --version codex_skill_pack_vote_r3 --baseline-version evolved_skill_r12_v2 --games 3 --llm-provider ark --output-dir logs/frozen_eval_smoke/r3_seed_aligned_expand_20260609 --internal-llm-retries 1",
+          "review_policy": "Do not poll large progress logs. Review aggregate result JSON after the batch completes."
+        },
+        {
+          "type": "compact_summary_watcher_scheduled",
+          "result": "running",
+          "output_dir": "logs/frozen_eval_smoke/r3_seed_aligned_expand_20260609",
+          "watcher_pid": 5020,
+          "waits_for_pid": 3324,
+          "summary_script": "scripts/summarize_frozen_eval_result.py",
+          "notes": "After the 3-game frozen eval exits, write a compact summary JSON from the final result JSON. This avoids repeated reads of large progress logs."
+        },
+        {
+          "type": "compact_summary_tool_test",
+          "result": "passed",
+          "commands": [
+            "python -m py_compile scripts\\summarize_frozen_eval_result.py",
+            "python -m unittest discover -s tests -p test_summarize_frozen_eval_result.py -v"
+          ],
+          "notes": "Protects low-token review path by testing compact metric extraction, recommendation generation, and latest-result resolution."
+        },
+        {
+          "type": "compact_summary_record_watcher_scheduled",
+          "result": "running",
+          "output_dir": "logs/frozen_eval_smoke/r3_seed_aligned_expand_20260609",
+          "watcher_pid": 13096,
+          "waits_for_pid": 5020,
+          "record_script": "scripts/record_frozen_eval_summary.py",
+          "notes": "After compact summary is generated, record aggregate metrics into skill_change_log without reading progress logs or full game archives."
+        },
+        {
+          "type": "frozen_eval_job_auto_compact_summary",
+          "result": "implemented",
+          "files": [
+            "scripts/run_frozen_eval_job.py",
+            "scripts/summarize_frozen_eval_result.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\run_frozen_eval_job.py scripts\\summarize_frozen_eval_result.py scripts\\record_frozen_eval_summary.py",
+            "python -m unittest discover -s tests -p test_run_frozen_eval_job.py -v",
+            "python -m unittest discover -s tests -p test_summarize_frozen_eval_result.py -v",
+            "python -m unittest discover -s tests -p test_record_frozen_eval_summary.py -v"
+          ],
+          "notes": "Future frozen-eval jobs write *_compact_summary.json automatically from the final result JSON, reducing the need for separate summary watchers and large log reads."
+        },
+        {
+          "type": "low_token_status_tool",
+          "result": "implemented",
+          "files": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "notes": "Adds a metadata-only status checker for frozen-eval output directories. It reports result/compact-summary/progress file counts and newest-file timestamps without reading progress logs or game archives, matching the low-token review policy."
+        },
+        {
+          "type": "compact_summary_gate_tool",
+          "result": "implemented",
+          "files": [
+            "scripts/gate_frozen_eval_summary.py",
+            "tests/test_gate_frozen_eval_summary.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\gate_frozen_eval_summary.py tests\\test_gate_frozen_eval_summary.py",
+            "python -m unittest discover -s tests -p test_gate_frozen_eval_summary.py -v"
+          ],
+          "notes": "Adds a conservative candidate gate from compact summaries only. It can recommend rerun_required, revise_skill, tradeoff_review_required, expand_sample, or promote_after_codex_review without reading full progress logs."
+        },
+        {
+          "type": "compact_summary_gate_smoke",
+          "result": "expand_sample",
+          "source_summary_path": "logs\\frozen_eval_smoke\\r3_seed_aligned_20260609\\20260609_074317_824810_frozen_eval_result_compact_summary.json",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "completed_games": {
+            "candidate": 1,
+            "baseline": 1
+          },
+          "metrics": {
+            "target_mistake_delta": -1,
+            "overall_delta": 14.05,
+            "mistakes_per_game_delta": -8.0,
+            "vote_quality_delta": 4.43,
+            "wolf_deception_quality_delta": 14.0
+          },
+          "checks": {
+            "seed_aligned": true,
+            "enough_games": false,
+            "target_improved": true,
+            "overall_not_regressed": true,
+            "mistakes_not_worse": true,
+            "vote_quality_not_collapsed": true,
+            "wolf_deception_not_collapsed": true,
+            "no_eval_errors": true
+          },
+          "notes": "Gate agrees with manual review: r3 is directionally useful on the seed-aligned one-game smoke test, but the sample is too small for promotion."
+        },
+        {
+          "type": "record_summary_includes_gate",
+          "result": "implemented",
+          "files": [
+            "scripts/record_frozen_eval_summary.py",
+            "scripts/gate_frozen_eval_summary.py",
+            "tests/test_record_frozen_eval_summary.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\record_frozen_eval_summary.py scripts\\gate_frozen_eval_summary.py",
+            "python -m unittest discover -s tests -p test_record_frozen_eval_summary.py -v",
+            "python -m unittest discover -s tests -p test_gate_frozen_eval_summary.py -v"
+          ],
+          "notes": "When the current record watcher writes the final expanded frozen-eval summary into skill_change_log, it will also include gate_recommendation, gate_checks, gate_metrics, and gate_why."
+        },
+        {
+          "type": "frozen_eval_job_auto_gate",
+          "result": "implemented",
+          "files": [
+            "scripts/run_frozen_eval_job.py",
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\run_frozen_eval_job.py scripts\\check_frozen_eval_status.py scripts\\gate_frozen_eval_summary.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v",
+            "python -m unittest discover -s tests -p test_run_frozen_eval_job.py -v",
+            "python -m unittest discover -s tests -p test_gate_frozen_eval_summary.py -v"
+          ],
+          "notes": "Future frozen-eval jobs now write a sibling *_frozen_eval_gate.json after compact summary generation. The status checker reports gate file counts from metadata only, so post-run review can start from result/summary/gate artifacts instead of progress logs."
+        },
+        {
+          "type": "low_token_status_watcher_log_metadata",
+          "result": "implemented",
+          "files": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "notes": "The status checker now also identifies watcher stdout/stderr log files by metadata only. This helps distinguish active wrapper output from result artifacts without reading log bodies."
+        },
+        {
+          "type": "frozen_eval_artifact_finalizer",
+          "result": "implemented",
+          "files": [
+            "scripts/finalize_frozen_eval_artifacts.py",
+            "tests/test_finalize_frozen_eval_artifacts.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\finalize_frozen_eval_artifacts.py",
+            "python -m unittest discover -s tests -p test_finalize_frozen_eval_artifacts.py -v",
+            "python -m unittest discover -s tests -p test_record_frozen_eval_summary.py -v"
+          ],
+          "current_batch_probe": {
+            "command": "python scripts\\finalize_frozen_eval_artifacts.py logs\\frozen_eval_smoke\\r3_seed_aligned_expand_20260609 --change-id codex_skill_pack_vote_r3_change_1",
+            "result": "not_ready",
+            "reason": "No *_frozen_eval_result.json found."
+          },
+          "notes": "Adds a one-shot finalizer for completed frozen-eval directories. It creates missing compact summary and gate artifacts, optionally records the summary plus gate decision into skill_change_log, and returns not_ready without reading progress logs when the result file is absent."
+        },
+        {
+          "type": "low_token_status_pid_probe",
+          "result": "implemented",
+          "files": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py tests\\test_check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "current_batch_probe": {
+            "command": "python scripts\\check_frozen_eval_status.py logs\\frozen_eval_smoke\\r3_seed_aligned_expand_20260609 --pid 3324 --pid 20252 --pid 5020 --pid 13096",
+            "state": "running_process_alive",
+            "alive_pids": [
+              3324,
+              20252,
+              5020,
+              13096
+            ],
+            "result_count": 0,
+            "compact_summary_count": 0,
+            "gate_count": 0
+          },
+          "notes": "Status checks can now include optional process liveness probes, which helps distinguish a long LLM wait/rate-limit cooldown from a dead job without reading watcher or progress log bodies."
+        },
+        {
+          "type": "seed_aligned_frozen_eval_expand_summary",
+          "recorded_at": "20260609_171310",
+          "result": "candidate_promising_expand_or_promote_after_review",
+          "gate_recommendation": "rerun_required",
+          "gate_checks": {
+            "seed_aligned": true,
+            "enough_games": false,
+            "target_improved": true,
+            "overall_not_regressed": true,
+            "mistakes_not_worse": true,
+            "vote_quality_not_collapsed": true,
+            "wolf_deception_not_collapsed": true,
+            "no_eval_errors": false
+          },
+          "gate_metrics": {
+            "target_mistake_delta": -1,
+            "overall_delta": 1.48,
+            "mistakes_per_game_delta": 0.0,
+            "vote_quality_delta": 5.6,
+            "wolf_deception_quality_delta": 6.0
+          },
+          "gate_why": [
+            "Evaluation errors were recorded; rerun before changing promotion state."
+          ],
+          "source_summary_path": "logs\\frozen_eval_smoke\\r3_seed_aligned_expand_20260609\\20260609_132317_670213_frozen_eval_result_compact_summary.json",
+          "source_result_path": "logs\\frozen_eval_smoke\\r3_seed_aligned_expand_20260609\\20260609_132317_670213_frozen_eval_result.json",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "games": 3,
+          "completed_games": {
+            "candidate": 1,
+            "baseline": 1
+          },
+          "seed_alignment": {
+            "mode": "candidate_completed_seeds",
+            "candidate_completed_seeds": [
+              20320529
+            ],
+            "baseline_completed_seeds": [
+              20320529
+            ]
+          },
+          "candidate_overall": 84.84,
+          "baseline_overall": 83.36,
+          "delta": {
+            "overall": 1.48,
+            "mistakes_per_game": 0.0,
+            "villager_win_rate": 0.0,
+            "werewolf_win_rate": 0.0
+          },
+          "candidate_mistakes_per_game": 1.0,
+          "baseline_mistakes_per_game": 1.0,
+          "candidate_pack_vote_mistakes": 0,
+          "baseline_pack_vote_mistakes": 1,
+          "candidate_mistake_counts": {
+            "witch_mechanical_n1_save": 1
+          },
+          "baseline_mistake_counts": {
+            "werewolf_exposed_pack_vote": 1
+          },
+          "candidate_vote_quality": 87.2,
+          "baseline_vote_quality": 81.6,
+          "candidate_wolf_deception_quality": 100.0,
+          "baseline_wolf_deception_quality": 94.0,
+          "archives": {
+            "candidate": [
+              "logs\\games\\20260609_151130_468638_game-20320529-e04f61.json"
+            ],
+            "baseline": [
+              "logs\\games\\20260609_164547_222762_game-20320529-a41d6b.json"
+            ]
+          },
+          "errors": {
+            "candidate": [
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 0,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320521,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780983647041edb124bb51c6391e7f5ca92233230f6821cb52\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_134046_493499_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 1,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320522,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointRPMExceeded\",\"message\":\"The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780984334333ac443883f8277eae89ba601a282e4e8f5260a2\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_135213_652473_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 2,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320523,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointRPMExceeded\",\"message\":\"The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780985246832d124c43c387314b34f4e9e457720e33927a91e\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_140726_120912_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 3,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320524,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780985555057758a243061b974bfd13d0678393298de7a5c1a\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_141234_314667_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 4,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320525,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 0217809859281792ccfb06286a6c8e5f39376a7fb154ac9bf3747\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_141847_425605_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 5,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320526,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780986493378fc7b414ede9ab35234ab808cc92596bc2fb873\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_142812_602973_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 6,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320527,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780987396979c2ac42b5b86809233f1159b66476f323e92522\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_144316_188068_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 0,
+                "attempt_index": 7,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320528,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780987822435f789d4d4546194a16e88624aed779d5c23b489\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_145021_624575_error_codex_skill_pack_vote_r3_0.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 1,
+                "attempt_index": 9,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320530,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780991162283a6a8d4b44bb3368040e48a43c809a8deb2f3ce\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_154601_371565_error_codex_skill_pack_vote_r3_1.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 1,
+                "attempt_index": 10,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320531,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780991527460775fe845e21f5dcdf21153e30ee73a80172b4b\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_155206_521539_error_codex_skill_pack_vote_r3_1.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 1,
+                "attempt_index": 11,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320532,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 021780991932716282edfdc2388a979272c7cd8590e23d0e56934\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_155851_760071_error_codex_skill_pack_vote_r3_1.json"
+              },
+              {
+                "version_id": "codex_skill_pack_vote_r3",
+                "game_index": 1,
+                "attempt_index": 12,
+                "games_requested": 3,
+                "max_attempts": 13,
+                "seed": 20320533,
+                "seed_offset": 60000,
+                "seed_sequence": null,
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 02178099229884342de8e8690a59136303db9f7aadcef94c8be31\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_160457_876565_error_codex_skill_pack_vote_r3_1.json"
+              }
+            ],
+            "baseline": [
+              {
+                "version_id": "evolved_skill_r12_v2",
+                "game_index": 0,
+                "attempt_index": 0,
+                "games_requested": 1,
+                "max_attempts": 11,
+                "seed": 20320529,
+                "seed_offset": 60000,
+                "seed_sequence": [
+                  20320529
+                ],
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 0217809926685899badbe816172dbb331753bd21c11e8fabd9c97\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_161107_631109_error_evolved_skill_r12_v2_0.json"
+              },
+              {
+                "version_id": "evolved_skill_r12_v2",
+                "game_index": 0,
+                "attempt_index": 1,
+                "games_requested": 1,
+                "max_attempts": 11,
+                "seed": 20320529,
+                "seed_offset": 60000,
+                "seed_sequence": [
+                  20320529
+                ],
+                "agent_backend": "llm",
+                "llm_provider": "ark",
+                "llm_model": null,
+                "error": "LLMError",
+                "message": "ark HTTP 429: {\"error\":{\"code\":\"RateLimitExceeded.EndpointTPMExceeded\",\"message\":\"The Tokens Per Minute (TPM) limit of the associated endpoint for your account has been exceeded. Request id: 0217809930368837509f28e83afdba9612b61dc9442cd53bce7e1\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+                "archive_path": "logs\\games\\20260609_161715_894856_error_evolved_skill_r12_v2_0.json"
+              }
+            ]
+          },
+          "notes": [
+            "Recorded from compact summary only; no progress log or full game archive was read.",
+            "This record does not promote a version automatically. Codex should review aggregate tradeoffs before promotion or r4 revision."
+          ]
+        },
+        {
+          "type": "provider_specific_retry_override",
+          "result": "implemented",
+          "files": [
+            "scripts/run_frozen_eval_job.py",
+            "tests/test_run_frozen_eval_job.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\run_frozen_eval_job.py",
+            "python -m unittest discover -s tests -p test_run_frozen_eval_job.py -v",
+            "python -m unittest discover -s tests -p test_llm.py -v"
+          ],
+          "notes": "run_frozen_eval_job --internal-llm-retries now maps to provider-specific retry env vars: ARK_MAX_RETRIES, DASHSCOPE_MAX_RETRIES, or DASHSCOPE_GENERATION_MAX_RETRIES. This makes DashScope flash experiments use the intended retry budget instead of only overriding Ark."
+        },
+        {
+          "type": "dashscope_flash_frozen_eval_smoke_started",
+          "result": "running",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "games": 1,
+          "llm_provider": "dashscope",
+          "llm_model": "deepseek-v4-flash",
+          "output_dir": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302",
+          "python_pid": 22308,
+          "watcher_pid": 15744,
+          "command": "python scripts\\run_frozen_eval_job.py --version codex_skill_pack_vote_r3 --baseline-version evolved_skill_r12_v2 --games 1 --llm-provider dashscope --llm-model deepseek-v4-flash --output-dir logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302 --internal-llm-retries 1",
+          "status_probe": {
+            "state": "running_process_alive",
+            "result_count": 0,
+            "compact_summary_count": 0,
+            "gate_count": 0
+          },
+          "notes": "Started a one-game DashScope deepseek-v4-flash frozen eval smoke to avoid the shared Ark endpoint 429 bottleneck. Review only compact summary and gate after completion."
+        },
+        {
+          "type": "dashscope_flash_finalizer_watcher_scheduled",
+          "result": "running",
+          "output_dir": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302",
+          "watcher_pid": 25976,
+          "waits_for_pid": 22308,
+          "command": "python scripts\\finalize_frozen_eval_artifacts.py logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302 --change-id codex_skill_pack_vote_r3_change_1",
+          "notes": "Watcher waits for the DashScope flash smoke Python process to exit, then runs the low-token finalizer. It should create/record result summary and gate without reading progress logs."
+        },
+        {
+          "type": "dashscope_flash_smoke_status_probe",
+          "recorded_at": "20260609_174004",
+          "result": "running_no_result_yet",
+          "output_dir": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302",
+          "state": "running_process_alive",
+          "result_count": 0,
+          "compact_summary_count": 0,
+          "gate_count": 0,
+          "progress_size_bytes": 5417958,
+          "alive_pids": [
+            22308,
+            15744,
+            25976
+          ],
+          "notes": "DeepSeek v4 flash smoke is still running and writing progress. No result/summary/gate artifacts exist yet; keep waiting for the finalizer watcher instead of reading progress logs."
+        },
+        {
+          "type": "frozen_eval_max_runtime_guard",
+          "recorded_at": "20260609_174219",
+          "result": "implemented",
+          "files": [
+            "scripts/run_frozen_eval_job.py",
+            "tests/test_run_frozen_eval_job.py"
+          ],
+          "tests": [
+            "python -m py_compile scripts\\run_frozen_eval_job.py",
+            "python -m unittest discover -s tests -p test_run_frozen_eval_job.py -v"
+          ],
+          "notes": "Future frozen eval jobs can pass --max-runtime-seconds, or set FROZEN_EVAL_MAX_RUNTIME_SECONDS, to abort long-running jobs from progress callbacks and write an error artifact instead of waiting indefinitely. Default is disabled, so existing runs are unaffected."
+        },
+        {
+          "type": "seed_aligned_frozen_eval_expand_summary",
+          "recorded_at": "20260609_174344",
+          "result": "candidate_needs_revision",
+          "gate_recommendation": "revise_skill",
+          "gate_checks": {
+            "seed_aligned": true,
+            "enough_games": false,
+            "target_improved": false,
+            "overall_not_regressed": true,
+            "mistakes_not_worse": true,
+            "vote_quality_not_collapsed": true,
+            "wolf_deception_not_collapsed": true,
+            "no_eval_errors": true
+          },
+          "gate_metrics": {
+            "target_mistake_delta": 1,
+            "overall_delta": 2.74,
+            "mistakes_per_game_delta": 0.0,
+            "vote_quality_delta": 9.34,
+            "wolf_deception_quality_delta": 0.0
+          },
+          "gate_why": [
+            "Target mistake did not decrease: werewolf_exposed_pack_vote."
+          ],
+          "source_summary_path": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302\\20260609_172304_118983_frozen_eval_result_compact_summary.json",
+          "source_result_path": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302\\20260609_172304_118983_frozen_eval_result.json",
+          "candidate_version": "codex_skill_pack_vote_r3",
+          "baseline_version": "evolved_skill_r12_v2",
+          "games": 1,
+          "completed_games": {
+            "candidate": 1,
+            "baseline": 1
+          },
+          "seed_alignment": {
+            "mode": "candidate_completed_seeds",
+            "candidate_completed_seeds": [
+              20320521
+            ],
+            "baseline_completed_seeds": [
+              20320521
+            ]
+          },
+          "candidate_overall": 83.37,
+          "baseline_overall": 80.63,
+          "delta": {
+            "overall": 2.74,
+            "mistakes_per_game": 0.0,
+            "villager_win_rate": 1.0,
+            "werewolf_win_rate": -1.0
+          },
+          "candidate_mistakes_per_game": 1.0,
+          "baseline_mistakes_per_game": 1.0,
+          "candidate_pack_vote_mistakes": 1,
+          "baseline_pack_vote_mistakes": 0,
+          "candidate_mistake_counts": {
+            "werewolf_exposed_pack_vote": 1
+          },
+          "baseline_mistake_counts": {
+            "witch_mechanical_n1_save": 1
+          },
+          "candidate_vote_quality": 76.14,
+          "baseline_vote_quality": 66.8,
+          "candidate_wolf_deception_quality": 100.0,
+          "baseline_wolf_deception_quality": 100.0,
+          "archives": {
+            "candidate": [
+              "logs\\games\\20260609_173451_593873_game-20320521-08101a.json"
+            ],
+            "baseline": [
+              "logs\\games\\20260609_174237_736539_game-20320521-e8e19c.json"
+            ]
+          },
+          "errors": {
+            "candidate": [],
+            "baseline": []
+          },
+          "notes": [
+            "Recorded from compact summary only; no progress log or full game archive was read.",
+            "This record does not promote a version automatically. Codex should review aggregate tradeoffs before promotion or r4 revision."
+          ]
+        }
+      ],
+      "next_steps": [
+        "Wait for the 3-game seed-aligned frozen eval to finish.",
+        "Review only the aggregate result JSON first; inspect single-game archives only if aggregate metrics are ambiguous.",
+        "Promote, reject, or revise r3 only after the expanded sample is reviewed."
+      ]
+    },
+    {
+      "change_id": "codex_skill_pack_vote_r4_change_1",
+      "recorded_at": "20260609_174759",
+      "status": "candidate",
+      "decision": "timeout_candidate_needs_revision",
+      "version_id": "codex_skill_pack_vote_r4",
+      "parent_id": "codex_skill_pack_vote_r3",
+      "candidate_file": "data/memory/role_memory_codex_skill_pack_vote_r4.json",
+      "target_failure_pattern": "werewolf_exposed_pack_vote",
+      "rationale": "R3 improved generic cross-day vote discipline in some Ark samples, but DashScope flash smoke showed a sharper failure: when checked wolf P5 counter-voted seer P2, teammate P9 also voted P2 despite recalling the split-vote skill, creating a two-wolf rescue/counter-vote exposure. R4 adds a checked-teammate rescue-risk gate without forcing a fixed action.",
+      "evidence": [
+        {
+          "source_summary": "logs/frozen_eval_smoke/r3_dashscope_flash_20260609_172302/20260609_172304_118983_frozen_eval_result_compact_summary.json",
+          "source_gate": "logs/frozen_eval_smoke/r3_dashscope_flash_20260609_172302/20260609_172304_118983_frozen_eval_gate.json",
+          "candidate_archive": "logs/games/20260609_173451_593873_game-20320521-08101a.json",
+          "baseline_archive": "logs/games/20260609_174237_736539_game-20320521-e8e19c.json",
+          "metrics": {
+            "target_mistake_delta": 1,
+            "overall_delta": 2.74,
+            "vote_quality_delta": 9.34,
+            "wolf_deception_quality_delta": 0.0
+          },
+          "observations": [
+            "Gate recommendation for r3 on DashScope flash was revise_skill because target mistake did not decrease.",
+            "Candidate D2: checked werewolf P5 voted P2; teammate P9 also voted P2; P7 abstained.",
+            "P9 recalled ???????? but still joined the checked teammate counter-vote, so the missing step is checked-teammate rescue risk, not generic same-target awareness."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "operation": "refine_skill",
+          "role": "werewolf",
+          "from_skill_id": "werewolf_skill_53608c4baf_v6_codex",
+          "to_skill_id": "werewolf_skill_53608c4baf_v7_codex",
+          "title": "?????????????",
+          "what_changed": [
+            "Added trigger focus for teammate being checked, strongly accused, failed in counter-claim, or voting/pushing the seer.",
+            "Added checked-teammate rescue check: non-checked wolves must separately evaluate whether joining the seer counter-vote exposes the pack.",
+            "Added explicit autonomous comparison among rescue vote, bus/light-bus, abstain, or independent public suspicion.",
+            "Added avoid clauses for copying the checked teammate self-rescue logic or joining a single-seer counter-vote without independent evidence."
+          ],
+          "why": "The r3 failure happened after the skill was recalled, so r4 strengthens the procedure steps for the specific rescue-vote exposure context instead of adding a hard rule or changing evaluator logic."
+        }
+      ],
+      "validation": [
+        {
+          "type": "json_and_load_check",
+          "result": "passed",
+          "commands": [
+            "python -m json.tool data\\memory\\role_memory_codex_skill_pack_vote_r4.json",
+            "load_role_memory_profiles('codex_skill_pack_vote_r4')"
+          ],
+          "notes": "R4 loads all five roles; werewolf main vote skill is v7 with parent v6 and checked_teammate tag."
+        },
+        {
+          "type": "unit_tests",
+          "result": "passed",
+          "commands": [
+            "python -m unittest discover -s tests -p test_memory_store.py -v"
+          ]
+        },
+        {
+          "type": "dashscope_flash_r4_vs_r3_smoke_started",
+          "recorded_at": "20260609_174959",
+          "result": "running",
+          "candidate_version": "codex_skill_pack_vote_r4",
+          "baseline_version": "codex_skill_pack_vote_r3",
+          "games": 1,
+          "llm_provider": "dashscope",
+          "llm_model": "deepseek-v4-flash",
+          "output_dir": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816",
+          "python_pid": 24892,
+          "watcher_pid": 25948,
+          "finalizer_watcher_pid": 12788,
+          "max_runtime_seconds": 1800,
+          "command": "python scripts\\run_frozen_eval_job.py --version codex_skill_pack_vote_r4 --baseline-version codex_skill_pack_vote_r3 --games 1 --llm-provider dashscope --llm-model deepseek-v4-flash --output-dir logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816 --internal-llm-retries 1 --max-runtime-seconds 1800",
+          "notes": "Tests whether r4 checked-teammate rescue-risk gate improves over parent r3 under the same DashScope flash provider. Finalizer watcher will record compact summary/gate after process exit."
+        },
+        {
+          "type": "low_token_status_cadence",
+          "recorded_at": "20260609_180000",
+          "result": "passed",
+          "files_changed": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "notes": "Status checker now accepts expected-duration and min-check-interval inputs, estimates run age from progress file metadata, and reports a recommended next-check time. This keeps long frozen eval monitoring metadata-only and avoids repeatedly reading large progress or game logs."
+        },
+        {
+          "type": "frozen_eval_skill_review_pack",
+          "recorded_at": "20260609_181000",
+          "result": "passed",
+          "files_changed": [
+            "scripts/build_frozen_eval_review_pack.py",
+            "scripts/run_frozen_eval_job.py",
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_build_frozen_eval_review_pack.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\build_frozen_eval_review_pack.py scripts\\run_frozen_eval_job.py scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_build_frozen_eval_review_pack.py -v",
+            "python -m unittest discover -s tests -p test_run_frozen_eval_job.py -v",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "sample_output": "logs\\frozen_eval_smoke\\r3_dashscope_flash_20260609_172302\\20260609_172304_118983_frozen_eval_result_skill_review_pack.json",
+          "notes": "Adds a compact target-mistake review pack for frozen eval results. It extracts only relevant public speech/vote snippets, matched skill signals, and target mistake metadata from completed archives. Future run_frozen_eval_job executions write this pack automatically unless --no-review-pack is passed; status checks report review_pack_count from metadata only."
+        },
+        {
+          "type": "finalizer_review_pack_option_and_watcher",
+          "recorded_at": "20260609_181200",
+          "result": "running",
+          "files_changed": [
+            "scripts/finalize_frozen_eval_artifacts.py",
+            "tests/test_finalize_frozen_eval_artifacts.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\finalize_frozen_eval_artifacts.py scripts\\build_frozen_eval_review_pack.py",
+            "python -m unittest discover -s tests -p test_finalize_frozen_eval_artifacts.py -v",
+            "python -m unittest discover -s tests -p test_build_frozen_eval_review_pack.py -v"
+          ],
+          "watcher": {
+            "pid": 6564,
+            "waits_for_pid": 24892,
+            "output_dir": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816",
+            "stdout": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816\\review_pack_watcher_stdout.log",
+            "stderr": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816\\review_pack_watcher_stderr.log",
+            "command": "python scripts\\finalize_frozen_eval_artifacts.py logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816 --change-id codex_skill_pack_vote_r4_change_1 --review-pack"
+          },
+          "notes": "Adds optional --review-pack support to the finalizer, then attaches a one-shot watcher to the already-running r4 smoke so this run also gets a compact review pack after completion. The watcher only waits for the frozen-eval process and does not terminate or interfere with it."
+        },
+        {
+          "type": "change_log_review_pack_traceability",
+          "recorded_at": "20260609_181400",
+          "result": "passed",
+          "files_changed": [
+            "scripts/record_frozen_eval_summary.py",
+            "tests/test_record_frozen_eval_summary.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\record_frozen_eval_summary.py scripts\\finalize_frozen_eval_artifacts.py",
+            "python -m unittest discover -s tests -p test_record_frozen_eval_summary.py -v",
+            "python -m unittest discover -s tests -p test_finalize_frozen_eval_artifacts.py -v"
+          ],
+          "notes": "When compact frozen-eval summaries are recorded into skill_change_log, records now include source_review_pack_path and source_review_pack_exists. This keeps each skill change connected to the small evidence pack used for Codex review."
+        },
+        {
+          "type": "status_max_runtime_awareness",
+          "recorded_at": "20260609_181800",
+          "result": "passed",
+          "files_changed": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "notes": "Status checker now accepts --max-runtime-seconds and reports remaining/exceeded runtime budget. This separates low-frequency expected-duration polling from the harder wall-clock guard, making long LLM calls easier to monitor without reading progress logs."
+        }
+      ],
+      "next_steps": [
+        "Run a one-game DashScope flash smoke against parent r3 with a wall-clock guard.",
+        "If r4 reduces werewolf_exposed_pack_vote without vote/deception collapse, expand to 3 clean seed-aligned samples.",
+        "If r4 still fails, inspect only the relevant vote/matched-skill snippets before making r5."
+      ]
+    },
+    {
+      "change_id": "codex_skill_pack_vote_r5_change_1",
+      "recorded_at": "20260609_182100",
+      "status": "candidate",
+      "decision": "expanded_eval_ready_for_codex_review",
+      "version_id": "codex_skill_pack_vote_r5",
+      "parent_id": "codex_skill_pack_vote_r4",
+      "candidate_file": "data/memory/role_memory_codex_skill_pack_vote_r5.json",
+      "target_failure_pattern": "werewolf_exposed_pack_vote",
+      "rationale": "The r4 vs r3 DashScope smoke timed out before baseline completion, so it cannot be used for promotion. However, the completed r4 candidate game still contained werewolf_exposed_pack_vote: P9 was publicly pressured for D1 abstention, then P7 and P9 both voted P6 after P9 redirected suspicion. R4 covered checked-teammate rescue but did not cover the broader under-pressure teammate rescue pivot.",
+      "evidence": [
+        {
+          "source_error_path": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816\\20260609_174818_818984_error.json",
+          "partial_review_pack": "logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816\\20260609_174818_818984_partial_candidate_skill_review_pack.json",
+          "candidate_archive": "logs\\games\\20260609_175914_535058_game-20320521-1058e6.json",
+          "metrics": {
+            "candidate_overall": 77.22,
+            "candidate_vote_quality": 75.5,
+            "candidate_wolf_deception_quality": 100.0,
+            "candidate_mistakes_per_game": 4.0,
+            "candidate_pack_vote_mistakes": 1
+          },
+          "observations": [
+            "The r4 frozen eval failed with TimeoutError at 1818.3s / 1800s before baseline completion.",
+            "Candidate r4 completed one game and won as werewolves, but still had werewolf_exposed_pack_vote.",
+            "The target mistake came from P7 and P9 both voting P6 on D2 after P9 was pressured for D1 abstention.",
+            "The v7 skill was recalled weakly, but its checked-teammate trigger did not strongly apply to a non-checked teammate under public pressure."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "operation": "refine_skill",
+          "role": "werewolf",
+          "from_skill_id": "werewolf_skill_53608c4baf_v7_codex",
+          "to_skill_id": "werewolf_skill_53608c4baf_v8_codex",
+          "title": "狼队公开压力位救援与转火分线",
+          "what_changed": [
+            "Expanded the trigger from checked-teammate rescue risk to any teammate under public pressure from abstention, suspicious vote, public accusations, or self-defense.",
+            "Added an autonomous comparison among direct rescue pivot, light pressure, bus/cut, abstain, third-party vote, or delayed vote.",
+            "Added an explicit check against copying the pressured teammate's redirected target or repeated template reason.",
+            "Added deep-wolf preservation guidance so at least one less-suspected wolf considers retaining independent position instead of all wolves protecting the pressured teammate."
+          ],
+          "why": "The observed failure was not a checked-wolf rescue. It was a rescue pivot around a teammate whose prior abstention became public pressure. R5 keeps the Agent autonomous while making that risk salient."
+        }
+      ],
+      "validation": [
+        {
+          "type": "json_and_load_check",
+          "result": "passed",
+          "commands": [
+            "python -m json.tool data\\memory\\role_memory_codex_skill_pack_vote_r5.json",
+            "python -m json.tool logs\\frozen_eval_smoke\\r4_vs_r3_dashscope_flash_20260609_174816\\20260609_174818_818984_partial_candidate_skill_review_pack.json",
+            "load_role_memory_profiles('codex_skill_pack_vote_r5')"
+          ],
+          "notes": "R5 loads all five roles. Werewolf main skill is werewolf_skill_53608c4baf_v8_codex with parent v7 and tags for under_pressure_teammate/rescue_pivot."
+        },
+        {
+          "type": "unit_tests",
+          "result": "passed",
+          "commands": [
+            "python -m unittest discover -s tests -p test_memory_store.py -v"
+          ]
+        },
+        {
+          "type": "dashscope_flash_r5_vs_r4_smoke_started",
+          "recorded_at": "20260609_182800",
+          "result": "running",
+          "candidate_version": "codex_skill_pack_vote_r5",
+          "baseline_version": "codex_skill_pack_vote_r4",
+          "games": 1,
+          "llm_provider": "dashscope",
+          "llm_model": "deepseek-v4-flash",
+          "output_dir": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_20260609_182200",
+          "python_pid": 9200,
+          "watcher_pid": 25004,
+          "max_runtime_seconds": 2700,
+          "expected_duration_seconds": 2400,
+          "command": "python scripts\\run_frozen_eval_job.py --version codex_skill_pack_vote_r5 --baseline-version codex_skill_pack_vote_r4 --games 1 --llm-provider dashscope --llm-model deepseek-v4-flash --output-dir logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_20260609_182200 --internal-llm-retries 1 --max-runtime-seconds 2700",
+          "status_probe": {
+            "state": "running_process_alive",
+            "next_check_reason": "well_before_expected_completion",
+            "recommended_next_check": "around 2026-06-09 18:53:42"
+          },
+          "notes": "Started a one-game r5 vs r4 smoke with a longer 2700s guard because r4 vs r3 timed out at 1800s. Future review should use result/compact_summary/gate/skill_review_pack only."
+        },
+        {
+          "type": "seed_aligned_frozen_eval_expand_summary",
+          "recorded_at": "20260610_091110",
+          "result": "target_not_reproduced_expand_sample",
+          "gate_recommendation": "expand_sample",
+          "gate_checks": {
+            "seed_aligned": true,
+            "enough_games": false,
+            "target_absent_both": true,
+            "target_improved": false,
+            "overall_not_regressed": true,
+            "mistakes_not_worse": true,
+            "vote_quality_not_collapsed": true,
+            "wolf_deception_not_collapsed": true,
+            "no_eval_errors": true
+          },
+          "gate_metrics": {
+            "target_mistake_delta": 0,
+            "overall_delta": -0.22,
+            "mistakes_per_game_delta": 0.0,
+            "vote_quality_delta": 8.91,
+            "wolf_deception_quality_delta": 0.0
+          },
+          "gate_why": [
+            "Target mistake did not appear for either side: werewolf_exposed_pack_vote; this sample cannot prove targeted improvement.",
+            "Metrics look directionally useful, but the sample is below the minimum game count."
+          ],
+          "source_summary_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_20260609_182200\\20260609_182743_980188_frozen_eval_result_compact_summary.json",
+          "source_result_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_20260609_182200\\20260609_182743_980188_frozen_eval_result.json",
+          "source_review_pack_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_20260609_182200\\20260609_182743_980188_frozen_eval_result_skill_review_pack.json",
+          "source_review_pack_exists": true,
+          "candidate_version": "codex_skill_pack_vote_r5",
+          "baseline_version": "codex_skill_pack_vote_r4",
+          "games": 1,
+          "completed_games": {
+            "candidate": 1,
+            "baseline": 1
+          },
+          "seed_alignment": {
+            "mode": "candidate_completed_seeds",
+            "candidate_completed_seeds": [
+              20320521
+            ],
+            "baseline_completed_seeds": [
+              20320521
+            ]
+          },
+          "candidate_overall": 80.99,
+          "baseline_overall": 81.21,
+          "delta": {
+            "overall": -0.22,
+            "mistakes_per_game": 0.0,
+            "villager_win_rate": 0.0,
+            "werewolf_win_rate": 0.0
+          },
+          "candidate_mistakes_per_game": 1.0,
+          "baseline_mistakes_per_game": 1.0,
+          "candidate_pack_vote_mistakes": 0,
+          "baseline_pack_vote_mistakes": 0,
+          "candidate_mistake_counts": {
+            "seer_failed_to_reveal_wolf": 1
+          },
+          "baseline_mistake_counts": {
+            "witch_mechanical_n1_save": 1
+          },
+          "candidate_vote_quality": 70.0,
+          "baseline_vote_quality": 61.09,
+          "candidate_wolf_deception_quality": 100.0,
+          "baseline_wolf_deception_quality": 100.0,
+          "archives": {
+            "candidate": [
+              "logs\\games\\20260609_183722_346295_game-20320521-b23ba3.json"
+            ],
+            "baseline": [
+              "logs\\games\\20260609_184633_509162_game-20320521-427ff9.json"
+            ]
+          },
+          "errors": {
+            "candidate": [],
+            "baseline": []
+          },
+          "notes": [
+            "Recorded from compact summary only; no progress log or full game archive was read.",
+            "This record does not promote a version automatically. Codex should review aggregate tradeoffs before promotion or r4 revision."
+          ]
+        },
+        {
+          "type": "gate_target_absent_both_logic",
+          "recorded_at": "20260610_091300",
+          "result": "passed",
+          "files_changed": [
+            "scripts/gate_frozen_eval_summary.py",
+            "scripts/summarize_frozen_eval_result.py",
+            "scripts/record_frozen_eval_summary.py",
+            "tests/test_gate_frozen_eval_summary.py",
+            "tests/test_summarize_frozen_eval_result.py",
+            "tests/test_record_frozen_eval_summary.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\summarize_frozen_eval_result.py scripts\\gate_frozen_eval_summary.py scripts\\record_frozen_eval_summary.py",
+            "python -m unittest discover -s tests -p test_summarize_frozen_eval_result.py -v",
+            "python -m unittest discover -s tests -p test_gate_frozen_eval_summary.py -v",
+            "python -m unittest discover -s tests -p test_record_frozen_eval_summary.py -v"
+          ],
+          "notes": "Gate now treats target_absent_both as an expansion signal instead of skill failure. This matches r5 vs r4: both sides had zero werewolf_exposed_pack_vote, so the target scenario did not reproduce and the next step is more samples, not another skill rewrite."
+        },
+        {
+          "type": "dashscope_flash_r5_vs_r4_expand_started",
+          "recorded_at": "20260610_091800",
+          "result": "running",
+          "candidate_version": "codex_skill_pack_vote_r5",
+          "baseline_version": "codex_skill_pack_vote_r4",
+          "games": 3,
+          "llm_provider": "dashscope",
+          "llm_model": "deepseek-v4-flash",
+          "output_dir": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500",
+          "python_pid": 9088,
+          "watcher_pid": 12360,
+          "expected_duration_seconds": 7200,
+          "max_runtime_seconds": 9000,
+          "command": "python scripts\\run_frozen_eval_job.py --version codex_skill_pack_vote_r5 --baseline-version codex_skill_pack_vote_r4 --games 3 --llm-provider dashscope --llm-model deepseek-v4-flash --output-dir logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500 --internal-llm-retries 1 --max-runtime-seconds 9000",
+          "status_probe": {
+            "state": "running_or_recently_updated",
+            "next_check_reason": "well_before_expected_completion",
+            "recommended_next_check": "around 2026-06-10 10:35:00"
+          },
+          "notes": "Started 3-game expansion because r5 vs r4 one-game smoke had target_absent_both and gate_recommendation=expand_sample. Review only result/compact_summary/gate/skill_review_pack after completion."
+        },
+        {
+          "type": "expand_finalizer_watcher_started",
+          "recorded_at": "20260610_092100",
+          "result": "running",
+          "waits_for_pid": 9088,
+          "watcher_pid": 27976,
+          "output_dir": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500",
+          "stdout": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500\\finalizer_record_watcher_stdout.log",
+          "stderr": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500\\finalizer_record_watcher_stderr.log",
+          "command": "python scripts\\finalize_frozen_eval_artifacts.py logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500 --change-id codex_skill_pack_vote_r5_change_1 --review-pack",
+          "notes": "One-shot watcher records result/summary/gate/review pack into skill_change_log after the 3-game expansion exits. It does not read progress logs or interfere with the running eval."
+        },
+        {
+          "type": "finalizer_error_artifact_recording",
+          "recorded_at": "20260610_092700",
+          "result": "passed",
+          "files_changed": [
+            "scripts/finalize_frozen_eval_artifacts.py",
+            "tests/test_finalize_frozen_eval_artifacts.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\finalize_frozen_eval_artifacts.py",
+            "python -m unittest discover -s tests -p test_finalize_frozen_eval_artifacts.py -v"
+          ],
+          "notes": "Finalizer now records *_error.json into skill_change_log when no result artifact exists. This protects long frozen evals from silent timeout/failed states and keeps failed experiments auditable without reading progress logs."
+        },
+        {
+          "type": "status_error_artifact_visibility",
+          "recorded_at": "20260610_093300",
+          "result": "passed",
+          "files_changed": [
+            "scripts/check_frozen_eval_status.py",
+            "tests/test_check_frozen_eval_status.py"
+          ],
+          "commands": [
+            "python -m py_compile scripts\\check_frozen_eval_status.py",
+            "python -m unittest discover -s tests -p test_check_frozen_eval_status.py -v"
+          ],
+          "notes": "Status checker now reports *_error.json counts and returns failed_error_artifact when no result exists and no live process remains. This makes timeout/failed frozen evals visible without reading progress logs."
+        },
+        {
+          "type": "seed_aligned_frozen_eval_expand_summary",
+          "recorded_at": "20260610_102900",
+          "result": "candidate_promising_expand_or_promote_after_review",
+          "gate_recommendation": "promote_after_codex_review",
+          "gate_checks": {
+            "seed_aligned": true,
+            "enough_games": true,
+            "target_absent_both": false,
+            "target_improved": true,
+            "overall_not_regressed": true,
+            "mistakes_not_worse": true,
+            "vote_quality_not_collapsed": true,
+            "wolf_deception_not_collapsed": true,
+            "no_eval_errors": true
+          },
+          "gate_metrics": {
+            "target_mistake_delta": -1,
+            "overall_delta": 1.64,
+            "mistakes_per_game_delta": -1.67,
+            "vote_quality_delta": -4.36,
+            "wolf_deception_quality_delta": 7.33
+          },
+          "gate_why": [
+            "Aggregate checks passed; inspect concise evidence before promoting."
+          ],
+          "source_summary_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500\\20260610_091701_987535_frozen_eval_result_compact_summary.json",
+          "source_result_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500\\20260610_091701_987535_frozen_eval_result.json",
+          "source_review_pack_path": "logs\\frozen_eval_smoke\\r5_vs_r4_dashscope_flash_expand_20260610_091500\\20260610_091701_987535_frozen_eval_result_skill_review_pack.json",
+          "source_review_pack_exists": true,
+          "candidate_version": "codex_skill_pack_vote_r5",
+          "baseline_version": "codex_skill_pack_vote_r4",
+          "games": 3,
+          "completed_games": {
+            "candidate": 3,
+            "baseline": 3
+          },
+          "seed_alignment": {
+            "mode": "candidate_completed_seeds",
+            "candidate_completed_seeds": [
+              20320521,
+              20320522,
+              20320523
+            ],
+            "baseline_completed_seeds": [
+              20320521,
+              20320522,
+              20320523
+            ]
+          },
+          "candidate_overall": 79.97,
+          "baseline_overall": 78.33,
+          "delta": {
+            "overall": 1.64,
+            "mistakes_per_game": -1.67,
+            "villager_win_rate": 0.0,
+            "werewolf_win_rate": 0.0
+          },
+          "candidate_mistakes_per_game": 1.33,
+          "baseline_mistakes_per_game": 3.0,
+          "candidate_pack_vote_mistakes": 2,
+          "baseline_pack_vote_mistakes": 3,
+          "candidate_mistake_counts": {
+            "seer_failed_to_reveal_wolf": 1,
+            "witch_mechanical_n1_save": 1,
+            "werewolf_exposed_pack_vote": 2
+          },
+          "baseline_mistake_counts": {
+            "witch_mechanical_n1_save": 1,
+            "werewolf_exposed_pack_vote": 3,
+            "villager_ignored_confirmed_wolf": 4,
+            "werewolf_incomplete_fake_seer_claim": 1
+          },
+          "candidate_vote_quality": 70.6,
+          "baseline_vote_quality": 74.96,
+          "candidate_wolf_deception_quality": 94.0,
+          "baseline_wolf_deception_quality": 86.67,
+          "archives": {
+            "candidate": [
+              "logs\\games\\20260610_092536_291107_game-20320521-3eaa4c.json",
+              "logs\\games\\20260610_093740_680111_game-20320522-29b13b.json",
+              "logs\\games\\20260610_095623_507191_game-20320523-3ce71c.json"
+            ],
+            "baseline": [
+              "logs\\games\\20260610_100635_679464_game-20320521-0b5d9f.json",
+              "logs\\games\\20260610_102109_519911_game-20320522-5f6931.json",
+              "logs\\games\\20260610_102854_622872_game-20320523-f1c5fc.json"
+            ]
+          },
+          "errors": {
+            "candidate": [],
+            "baseline": []
+          },
+          "notes": [
+            "Recorded from compact summary only; no progress log or full game archive was read.",
+            "This record does not promote a version automatically. Codex should review aggregate tradeoffs before promotion or r4 revision."
+          ]
+        }
+      ],
+      "next_steps": [
+        "Run a fresh r5 smoke against r4 or r3 with a longer max runtime, for example 2700 seconds, before any promotion decision.",
+        "If r5 reduces werewolf_exposed_pack_vote and does not increase total mistakes, expand to 3 seed-aligned samples.",
+        "If r5 still shows pack-vote exposure, inspect only the generated skill_review_pack before making another skill change."
+      ]
+    }
+  ]
+}

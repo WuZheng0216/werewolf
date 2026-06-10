@@ -1,0 +1,3 @@
+# Python 3.12+ is recommended.
+# Required only for DashScope native Generation API models such as deepseek-v3.2.
+dashscope>=1.23.0

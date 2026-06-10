@@ -1,0 +1,1324 @@
+{
+  "schema_version": 1,
+  "kind": "evolution_run",
+  "created_at": "20260524_185658_465152",
+  "history": [
+    {
+      "version_id": "evolved_r1",
+      "parent_id": "initial",
+      "aggregate": {
+        "games": 3,
+        "average_scores": {
+          "mistake_penalty": 94.0,
+          "overall": 82.75,
+          "skill_quality": 81.51,
+          "speech_quality": 79.64,
+          "team_contribution": 77.65,
+          "vote_quality": 79.42
+        },
+        "winner_counts": {
+          "villagers": 3
+        },
+        "mistake_counts": {
+          "werewolf_exposed_pack_vote": 2
+        },
+        "recommendations": {
+          "werewolf": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+          ],
+          "seer": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "witch": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "hunter": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "villager": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ]
+        },
+        "mistakes_per_game": 0.67
+      },
+      "promoted": true,
+      "reflections": {
+        "werewolf": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "规则复盘：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+        ],
+        "seer": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "witch": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "hunter": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "villager": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ]
+      },
+      "archive_paths": [
+        "logs\\games\\20260524_174537_156836_game-20270521-82aedd.json",
+        "logs\\games\\20260524_175818_920774_game-20270522-3a036d.json",
+        "logs\\games\\20260524_181223_989146_game-20270523-3ff9be.json"
+      ],
+      "errors": [],
+      "llm_reviews": [
+        {
+          "review_status": "ok",
+          "game_summary": "好人阵营获胜。好人阵营获胜；综合评分 83.4。 本局识别关键失误 0 个，投票质量 79.2，技能质量 79.1。",
+          "good_cases": [
+            {
+              "role": "werewolf",
+              "player_id": 1,
+              "event_ids": [],
+              "reason": "首夜无公开身份线索，选择存活非己玩家刀取",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 3,
+              "event_ids": [],
+              "reason": "首夜无公开身份线索，选择非狼队存活玩家开刀",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 9,
+              "event_ids": [],
+              "reason": "首夜选择非狼队友的存活玩家刀人，推进狼队阵营目标",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "seer",
+              "player_id": 4,
+              "event_ids": [],
+              "reason": "首夜无额外公开信息，选择首验P1获取身份信息助力好人推理",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "witch",
+              "player_id": 6,
+              "event_ids": [],
+              "reason": "首夜优先使用解药，保留好人轮次",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            }
+          ],
+          "bad_cases": [],
+          "role_reflections": {
+            "werewolf": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "seer": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "witch": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "hunter": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "villager": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ]
+          },
+          "memory_candidates": [
+            {
+              "role": "werewolf",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "seer",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "witch",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "hunter",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "villager",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            }
+          ],
+          "confidence": 0.72,
+          "metadata": {
+            "review_backend": "heuristic_backfill",
+            "fallback_reason": "JSONDecodeError: Expecting ',' delimiter: line 90 column 10 (char 3229)",
+            "source": "report_mistakes_and_recommendations"
+          },
+          "memory_bank_item_ids": [
+            "werewolf-9dc9e9b178b4",
+            "seer-3cd8e26ab9ad",
+            "witch-6dc80c760a38",
+            "hunter-1094ad8980d3",
+            "villager-5c22639a99cd"
+          ],
+          "backfill_metadata": {
+            "backfilled_at": "20260524_212001_076515",
+            "archive_path": "logs\\games\\20260524_174537_156836_game-20270521-82aedd.json",
+            "previous_review_status": "failed",
+            "dry_run": false
+          }
+        },
+        {
+          "review_status": "ok",
+          "game_summary": "本局好人阵营仅用2天获胜，预言家首夜验出狼人带队放逐，女巫精准毒杀高嫌疑狼人，好人通过首日票型快速锁定最后一名狼人；狼队因首日三狼集体裸冲真预言家暴露共边关系导致崩盘。",
+          "good_cases": [
+            {
+              "role": "seer",
+              "player_id": 8,
+              "event_ids": [
+                5,
+                16,
+                30
+              ],
+              "reason": "首夜查验到狼人P1，首日公开发言跳明预言家报查杀带队，明确公布后续优先查验P7的计划，第二夜按计划查验P7确认狼身份，为好人提供明确的排狼方向。",
+              "lesson": "预言家拿到查杀信息后应第一时间公开身份带队，同步公布后续查验计划帮助好人锁定高嫌疑目标。"
+            },
+            {
+              "role": "witch",
+              "player_id": 5,
+              "event_ids": [
+                6,
+                31,
+                37
+              ],
+              "reason": "首夜使用解药救下被刀的平民P2为好人保住轮次，第二夜精准毒杀为查杀狼P1开脱、冲票真预言家的高嫌疑狼人P7，第二日跳明女巫公开技能操作信息，坐实真预言家身份的同时锁定最后一狼P4引导归票。",
+              "lesson": "女巫首夜优先开解药保轮次，毒杀目标优先选择为查杀狼站台、冲票预言家的高嫌疑对象，局势清晰时可跳明身份公开信息带队。"
+            },
+            {
+              "role": "villager",
+              "player_id": 2,
+              "event_ids": [
+                10,
+                34
+              ],
+              "reason": "首日公开发言质疑划水狼P1，要求所有玩家给出明确判断依据推动好人排狼，第二日通过公开票型锁定唯一存活的冲票真预言家的玩家P4，引导好人要求其表水为后续归票奠定基础。",
+              "lesson": "无夜间信息的平民可优先排查发言无有效输出的划水玩家，结合已坐实的身份信息和公开票型锁定嫌疑目标。"
+            }
+          ],
+          "bad_cases": [
+            {
+              "role": "werewolf",
+              "player_id": null,
+              "event_ids": [
+                18,
+                21,
+                24
+              ],
+              "reason": "首日三名狼人全部投票给跳明预言家的P8，集体裸冲的票型完全暴露狼队共边关系，为好人后续排狼直接提供了清晰的狼坑线索，是狼队崩盘的核心原因。",
+              "lesson": "狼人冲票时避免多狼无合理逻辑集体投票给同一明好人目标，应分散票型或给出符合好人视角的投票理由，防止暴露共边关系。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 7,
+              "event_ids": [
+                15
+              ],
+              "reason": "首日公开发言为被查杀的狼队友P1强行开脱，直接被预言家锁定为后续查验目标，同时引起好人怀疑，最终被女巫毒死，过早暴露自身身份。",
+              "lesson": "狼队友被公开查杀时，若无合理的好人视角逻辑，不要强行公开为其开脱，避免自身同步暴露。"
+            }
+          ],
+          "role_reflections": {
+            "werewolf": [
+              "早期投票阶段避免多狼无合理逻辑集体冲票同一明好人，防止票型暴露狼队共边关系",
+              "狼队友被公开查杀时，不要强行公开为其站台开脱，避免自身同步被好人锁定为嫌疑目标",
+              "被票型锤为狼嫌疑时，需给出更自洽的符合好人视角的表水逻辑，仅靠认错和转移视线无法蒙混过关"
+            ],
+            "seer": [],
+            "witch": [],
+            "hunter": [],
+            "villager": []
+          },
+          "memory_candidates": [
+            {
+              "role": "werewolf",
+              "memory": "狼人投票时应避免多狼无合理逻辑集体冲票同一公开身份的好人，需分散票型或给出符合好人视角的投票理由，防止票型暴露共边关系",
+              "evidence_event_ids": [
+                18,
+                21,
+                24
+              ],
+              "confidence": 0.95
+            },
+            {
+              "role": "seer",
+              "memory": "预言家拿到查杀信息后应第一时间公开身份带队，同步公布后续查验计划，帮助好人快速锁定高嫌疑目标",
+              "evidence_event_ids": [
+                16
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "witch",
+              "memory": "女巫毒杀目标可优先选择为公开查杀狼站台、冲票真预言家的高嫌疑玩家，帮助好人快速缩小狼坑",
+              "evidence_event_ids": [
+                31
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "villager",
+              "memory": "无夜间信息的好人可结合已坐实的身份信息、公开发言和票型锁定嫌疑目标，不需要额外夜间信息也能有效排狼",
+              "evidence_event_ids": [
+                34,
+                35
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "confidence": 0.9,
+          "metadata": {
+            "review_backend": "llm",
+            "llm_provider": "ark",
+            "llm_model": "ep-20260514115354-k4jz4",
+            "llm_timeout_seconds": 240.0,
+            "llm_max_retries": 1,
+            "llm_latency_ms": 63136.1
+          },
+          "memory_bank_item_ids": [
+            "werewolf-2ffe9f95ca1f",
+            "seer-4bc672e4d6b3",
+            "witch-0c516bfa8b1d",
+            "villager-948e569b6788"
+          ],
+          "backfill_metadata": {
+            "backfilled_at": "20260524_212104_285747",
+            "archive_path": "logs\\games\\20260524_175818_920774_game-20270522-3a036d.json",
+            "previous_review_status": "failed",
+            "dry_run": false
+          }
+        },
+        {
+          "review_status": "ok",
+          "game_summary": "好人阵营获胜。好人阵营获胜；综合评分 81.0。 本局识别关键失误 1 个，投票质量 71.8，技能质量 83.7。",
+          "good_cases": [
+            {
+              "role": "werewolf",
+              "player_id": 3,
+              "event_ids": [],
+              "reason": "首夜刀非狼队存活玩家，推进屠边目标",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 7,
+              "event_ids": [],
+              "reason": "首夜无公开玩家身份线索，选择外置位存活玩家刀杀",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 8,
+              "event_ids": [],
+              "reason": "首夜无公开玩家行为信息，选择非狼队友的存活玩家执行刀人",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "seer",
+              "player_id": 2,
+              "event_ids": [],
+              "reason": "首夜查验P1获取身份信息，为好人阵营排坑",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "witch",
+              "player_id": 5,
+              "event_ids": [],
+              "reason": "首夜使用解药，保留好人轮次",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            }
+          ],
+          "bad_cases": [
+            {
+              "role": "werewolf",
+              "player_id": 3,
+              "event_ids": [],
+              "reason": "多名狼人早期集中投 P2，票型可能暴露狼队协同。",
+              "lesson": "狼人白天投票应避免多名狼人在缺少独立公开证据时集中裸冲同一目标，可通过分票、轻踩队友或不同理由制造自然票型。"
+            }
+          ],
+          "role_reflections": {
+            "werewolf": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+            ],
+            "seer": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "witch": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "hunter": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "villager": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ]
+          },
+          "memory_candidates": [
+            {
+              "role": "werewolf",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "werewolf",
+              "memory": "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "seer",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "witch",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "hunter",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "villager",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "werewolf",
+              "memory": "狼人白天投票应避免多名狼人在缺少独立公开证据时集中裸冲同一目标，可通过分票、轻踩队友或不同理由制造自然票型。",
+              "evidence_event_ids": [],
+              "confidence": 0.86
+            }
+          ],
+          "confidence": 0.72,
+          "metadata": {
+            "review_backend": "heuristic_backfill",
+            "fallback_reason": "JSONDecodeError: Expecting ',' delimiter: line 102 column 10 (char 3365)",
+            "source": "report_mistakes_and_recommendations"
+          },
+          "memory_bank_item_ids": [
+            "werewolf-9dc9e9b178b4",
+            "werewolf-8679dc35a72c",
+            "seer-3cd8e26ab9ad",
+            "witch-6dc80c760a38",
+            "hunter-1094ad8980d3",
+            "villager-5c22639a99cd",
+            "werewolf-d2f1746ecece"
+          ],
+          "backfill_metadata": {
+            "backfilled_at": "20260524_212201_699739",
+            "archive_path": "logs\\games\\20260524_181223_989146_game-20270523-3ff9be.json",
+            "previous_review_status": "failed",
+            "dry_run": false
+          }
+        }
+      ],
+      "requested_games": 3,
+      "completed_games": 3,
+      "memory_file": "data\\memory\\role_memory_evolved_r1.json",
+      "memory_snapshot": "data\\memory\\snapshots\\20260524_181224_166916_evolved_r1.json"
+    },
+    {
+      "version_id": "evolved_r2",
+      "parent_id": "evolved_r1",
+      "aggregate": {
+        "games": 3,
+        "average_scores": {
+          "mistake_penalty": 64.0,
+          "overall": 72.1,
+          "skill_quality": 81.17,
+          "speech_quality": 81.44,
+          "team_contribution": 68.94,
+          "vote_quality": 57.65
+        },
+        "winner_counts": {
+          "werewolves": 3
+        },
+        "mistake_counts": {
+          "werewolf_exposed_pack_vote": 5,
+          "villager_ignored_confirmed_wolf": 6,
+          "hunter_shot_good": 1
+        },
+        "recommendations": {
+          "werewolf": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+          ],
+          "seer": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "witch": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。"
+          ],
+          "hunter": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+          ],
+          "villager": [
+            "保留公开信息来源，发言中说明判断依据和投票计划。",
+            "出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。"
+          ]
+        },
+        "mistakes_per_game": 4.0
+      },
+      "promoted": false,
+      "reflections": {
+        "werewolf": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "规则复盘：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。",
+          "LLM复盘：早期冲票需分散票型或铺垫合理逻辑，避免票型高度一致暴露共边关系",
+          "LLM复盘：优先刀杀已公开的核心神职可快速推进屠神进度，压缩好人操作空间",
+          "LLM复盘：队友被怀疑时可适当铺垫逻辑为其开脱，同时转移焦点到好人带队玩家身上"
+        ],
+        "seer": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "witch": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。"
+        ],
+        "hunter": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "规则复盘：开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+        ],
+        "villager": [
+          "规则复盘：保留公开信息来源，发言中说明判断依据和投票计划。",
+          "规则复盘：出现可信查杀时优先围绕查杀归票，不要散票到低依据目标。"
+        ]
+      },
+      "archive_paths": [
+        "logs\\games\\20260524_182546_530295_game-20280521-a595f7.json",
+        "logs\\games\\20260524_183752_110772_game-20280522-0a0a46.json",
+        "logs\\games\\20260524_185658_352050_game-20280523-1f94a3.json"
+      ],
+      "errors": [],
+      "llm_reviews": [
+        {
+          "review_status": "ok",
+          "game_summary": "本局狼人阵营首夜刀女巫P1被其自救后，借P1首日发言空泛无实质内容的机会煽动好人将女巫抗推，次夜统一刀杀已公开起跳的预言家P7，第三夜刀杀带队的猎人P2完成屠神获胜，好人因首日误投女巫丢失关键轮次最终落败。",
+          "good_cases": [
+            {
+              "role": "witch",
+              "player_id": 1,
+              "event_ids": [
+                6
+              ],
+              "reason": "女巫首夜被刀后使用解药自救，正确保留了好人轮次，符合神职技能使用最优策略。",
+              "lesson": "女巫首夜被刀时优先使用解药自救，避免首夜神职出局丢失轮次。"
+            },
+            {
+              "role": "seer",
+              "player_id": 7,
+              "event_ids": [
+                15,
+                31
+              ],
+              "reason": "预言家首日及时起跳报清查验结果和后续查验计划，次日优先查验对已报金水P3有异常质疑的P6，确认其狼人身份，为好人提供了准确的身份信息。",
+              "lesson": "无警长局预言家首日要及时起跳报查验，优先查验对金水有异常质疑的高嫌疑玩家。"
+            },
+            {
+              "role": "hunter",
+              "player_id": 2,
+              "event_ids": [
+                53
+              ],
+              "reason": "猎人被刀后准确识别为高嫌疑狼P6开脱、且投票给自己的P9为狼人，开枪带走一狼，尽可能为好人追回轮次。",
+              "lesson": "猎人死亡时优先带走为高嫌疑玩家开脱、且投票给自己的高狼面玩家，最大化技能收益。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": null,
+              "event_ids": [
+                28,
+                29,
+                30,
+                49,
+                50
+              ],
+              "reason": "狼队精准识别已公开的核心神职，次夜统一刀杀起跳预言家P7，第三夜统一刀杀带队猎人P2，快速推进屠神进度，符合阵营胜利目标。",
+              "lesson": "狼人夜间刀人优先选择已暴露的核心神职，可快速压缩好人信息与组织能力，推进屠边进度。"
+            }
+          ],
+          "bad_cases": [
+            {
+              "role": "witch",
+              "player_id": 1,
+              "event_ids": [
+                9,
+                18,
+                27
+              ],
+              "reason": "女巫首日发言空泛无实质内容，被全场质疑时未及时自证身份或报出有效信息，仅投票给归票自己的预言家，最终被好人抗推，直接丢失神职轮次。",
+              "lesson": "神职玩家被广泛质疑时要及时自证身份，给出合理的身份说明和独有信息，避免被抗推丢失轮次。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": null,
+              "event_ids": [
+                22,
+                23,
+                26,
+                44,
+                45,
+                47
+              ],
+              "reason": "狼队连续两天白天集中裸冲同一目标，首日三狼全冲P1、次日剩余三狼全冲P2，票型高度一致暴露狼队共边关系，属于可规避的协同失误。",
+              "lesson": "狼人早期投票时要适当分散票型或通过合理逻辑铺垫投票理由，避免多狼无理由集中冲票暴露队伍。"
+            }
+          ],
+          "role_reflections": {
+            "werewolf": [
+              "早期冲票需分散票型或铺垫合理逻辑，避免票型高度一致暴露共边关系",
+              "优先刀杀已公开的核心神职可快速推进屠神进度，压缩好人操作空间",
+              "队友被怀疑时可适当铺垫逻辑为其开脱，同时转移焦点到好人带队玩家身上"
+            ],
+            "seer": [],
+            "witch": [],
+            "hunter": [],
+            "villager": []
+          },
+          "memory_candidates": [
+            {
+              "role": "witch",
+              "memory": "女巫首夜被刀时应优先使用解药自救，若首日被广泛质疑，需及时透露身份或独有信息自证，避免被抗推丢失轮次。",
+              "evidence_event_ids": [
+                6,
+                9,
+                27
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "seer",
+              "memory": "无警长局预言家首日应及时起跳，报清查验结果和后续查验计划，优先查验对已报金水有异常质疑的高嫌疑玩家。",
+              "evidence_event_ids": [
+                15,
+                31
+              ],
+              "confidence": 1.0
+            },
+            {
+              "role": "hunter",
+              "memory": "猎人被刀死亡时，优先带走为高嫌疑玩家开脱、且投票给自己的高狼面玩家，尽可能追回轮次。",
+              "evidence_event_ids": [
+                53
+              ],
+              "confidence": 0.85
+            },
+            {
+              "role": "werewolf",
+              "memory": "狼人白天投票时，避免多狼无理由集中冲票同一目标，可通过合理逻辑铺垫投票理由或适当分散票型，隐藏共边关系。",
+              "evidence_event_ids": [
+                22,
+                23,
+                26,
+                44,
+                45,
+                47
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "werewolf",
+              "memory": "狼人夜间刀人优先选择已公开的核心神职（如起跳的预言家、带队的猎人），可快速推进屠边进度。",
+              "evidence_event_ids": [
+                28,
+                29,
+                30,
+                49,
+                50
+              ],
+              "confidence": 0.95
+            }
+          ],
+          "confidence": 0.95,
+          "metadata": {
+            "review_backend": "llm",
+            "llm_provider": "ark",
+            "llm_model": "ep-20260514115354-k4jz4",
+            "llm_timeout_seconds": 180.0,
+            "llm_max_retries": 2,
+            "llm_latency_ms": 67403.9
+          },
+          "memory_bank_item_ids": [
+            "witch-491dda41f9c7",
+            "hunter-82614a6b5a7e",
+            "werewolf-b2800ffa70a6",
+            "werewolf-57ef4dfd876c"
+          ]
+        },
+        {
+          "review_status": "ok",
+          "game_summary": "本局好人阵营无视预言家公开查杀信息，先后误放逐猎人、女巫，导致3名神职全部阵亡，狼人阵营完成屠神获胜。",
+          "good_cases": [
+            {
+              "role": "seer",
+              "player_id": 7,
+              "event_ids": [
+                5,
+                15,
+                24
+              ],
+              "reason": "预言家首夜验到狼人P1，白天果断起跳报出查验结果、后续查验计划，明确归票查杀狼，履行了预言家带队职责。",
+              "lesson": "预言家验到查杀后应第一时间起跳，清晰传递查验信息和归票方向，帮助好人统一投票。"
+            },
+            {
+              "role": "witch",
+              "player_id": 5,
+              "event_ids": [
+                6,
+                33
+              ],
+              "reason": "女巫首夜使用解药救回被刀玩家保住好人轮次，第二夜根据预言家公开查杀毒杀狼人P1，技能使用符合好人收益。",
+              "lesson": "女巫首夜优先用解药保障轮次，毒药优先留给有明确查杀证据的嫌疑目标。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": null,
+              "event_ids": [
+                29,
+                30,
+                31
+              ],
+              "reason": "狼人第二夜统一选择刀已起跳的预言家P7，快速清除对狼队威胁最大的神职，推进屠神进度。",
+              "lesson": "狼人夜间刀人应优先选择已公开身份的高威胁神职，快速达成屠边条件。"
+            },
+            {
+              "role": "hunter",
+              "player_id": 3,
+              "event_ids": [
+                28
+              ],
+              "reason": "猎人首日被放逐时，因公开信息不足未明确锁定狼人，选择不开枪避免误伤好人，符合好人收益。",
+              "lesson": "猎人被放逐时若没有强逻辑锁定狼人，应放弃开枪避免损失好人轮次。"
+            }
+          ],
+          "bad_cases": [
+            {
+              "role": "villager",
+              "player_id": null,
+              "event_ids": [
+                19,
+                21,
+                23,
+                42,
+                43,
+                45
+              ],
+              "reason": "好人村民无视预言家公开的查杀P1的信息，第一天被狼人带节奏投了猎人P3，第二天又投了跳女巫的好人P5，导致神职连续出局。",
+              "lesson": "唯一预言家给出明确查杀时，应优先投票查杀目标，不要被狼人引导的划水怀疑带偏。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": null,
+              "event_ids": [
+                18,
+                25,
+                26,
+                46,
+                47
+              ],
+              "reason": "多轮投票中狼人全员集中投票给同一个好人目标，票型高度一致，容易暴露共边关系，被好人识别狼队。",
+              "lesson": "狼人投票时应适当分散票型，或给出差异化的投票理由，避免票型暴露狼队协同。"
+            },
+            {
+              "role": "witch",
+              "player_id": 5,
+              "event_ids": [
+                38
+              ],
+              "reason": "女巫跳身份时发言中断，未完整说明毒杀目标是P1，导致被狼队抓住漏洞攻击，最终被好人抗推。",
+              "lesson": "神职跳明身份时要完整披露所有可公开的技能操作信息，消除身份疑点。"
+            }
+          ],
+          "role_reflections": {
+            "werewolf": [
+              "优先清除已起跳的高威胁神职，可大幅加快屠神进度",
+              "借好人对划水玩家的敌意引导抗推好人，风险低收益高",
+              "多狼裸冲同一目标容易暴露共边，需优化投票策略隐藏身份"
+            ],
+            "seer": [],
+            "witch": [],
+            "hunter": [],
+            "villager": []
+          },
+          "memory_candidates": [
+            {
+              "role": "villager",
+              "memory": "当场上只有唯一预言家起跳且给出明确查杀时，优先投票查杀目标，不要被其他无关嫌疑带偏投票方向",
+              "evidence_event_ids": [
+                19,
+                21,
+                23
+              ],
+              "confidence": 0.95
+            },
+            {
+              "role": "witch",
+              "memory": "跳明女巫身份时，需完整报出解药使用情况、毒杀目标等所有技能操作信息，避免因信息缺失被狼队攻击抗推",
+              "evidence_event_ids": [
+                38,
+                48
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "werewolf",
+              "memory": "夜间刀人优先级最高的是已公开身份的神职（如起跳的预言家），可快速压缩好人信息优势推进屠边",
+              "evidence_event_ids": [
+                29,
+                30,
+                31
+              ],
+              "confidence": 0.9
+            },
+            {
+              "role": "seer",
+              "memory": "预言家起跳后除了报查验和后续查验计划，还要主动强调好人应统一投查杀目标，避免狼队分票带节奏",
+              "evidence_event_ids": [
+                15,
+                27
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "confidence": 0.95,
+          "metadata": {
+            "review_backend": "llm",
+            "llm_provider": "ark",
+            "llm_model": "ep-20260514115354-k4jz4",
+            "llm_timeout_seconds": 180.0,
+            "llm_max_retries": 2,
+            "llm_latency_ms": 62402.5
+          },
+          "memory_bank_item_ids": [
+            "villager-9602173782a3",
+            "witch-9a3dc25c10ec",
+            "werewolf-bd5ad6a054c0",
+            "seer-616199688d2c"
+          ]
+        },
+        {
+          "review_status": "ok",
+          "game_summary": "狼人阵营获胜。狼人阵营获胜；综合评分 76.0。 本局识别关键失误 2 个，投票质量 63.3，技能质量 75.5。",
+          "good_cases": [
+            {
+              "role": "werewolf",
+              "player_id": 5,
+              "event_ids": [],
+              "reason": "首夜无公开玩家身份信息，选择刀取非狼队友的存活玩家积累阵营优势",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 6,
+              "event_ids": [],
+              "reason": "首夜无公开玩家行为信息，选择非狼队的存活玩家刀杀",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 9,
+              "event_ids": [],
+              "reason": "首夜无公开身份信息，选择非狼玩家刀杀为阵营抢轮次",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "seer",
+              "player_id": 8,
+              "event_ids": [],
+              "reason": "首夜查验存活非己玩家，获取身份信息协助好人排狼坑",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            },
+            {
+              "role": "witch",
+              "player_id": 1,
+              "event_ids": [],
+              "reason": "首夜被刀，使用解药自救保留好人轮次",
+              "lesson": "保留清晰的公开理由，并在后续发言和投票中持续引用可见证据。"
+            }
+          ],
+          "bad_cases": [
+            {
+              "role": "hunter",
+              "player_id": 2,
+              "event_ids": [],
+              "reason": "猎人开枪带走好人 P7，需要更依赖公开查杀和票型。",
+              "lesson": "猎人开枪前应优先选择多轮公开证据支持的高嫌疑目标，缺少硬证据时谨慎开枪。"
+            },
+            {
+              "role": "werewolf",
+              "player_id": 6,
+              "event_ids": [],
+              "reason": "多名狼人早期集中投 P3，票型可能暴露狼队协同。",
+              "lesson": "狼人白天投票应避免多名狼人在缺少独立公开证据时集中裸冲同一目标，可通过分票、轻踩队友或不同理由制造自然票型。"
+            }
+          ],
+          "role_reflections": {
+            "werewolf": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+            ],
+            "seer": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "witch": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ],
+            "hunter": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+            ],
+            "villager": [
+              "保留公开信息来源，发言中说明判断依据和投票计划。"
+            ]
+          },
+          "memory_candidates": [
+            {
+              "role": "werewolf",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "werewolf",
+              "memory": "早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "seer",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "witch",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "hunter",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "hunter",
+              "memory": "开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "villager",
+              "memory": "保留公开信息来源，发言中说明判断依据和投票计划。",
+              "evidence_event_ids": [],
+              "confidence": 0.82
+            },
+            {
+              "role": "hunter",
+              "memory": "猎人开枪前应优先选择多轮公开证据支持的高嫌疑目标，缺少硬证据时谨慎开枪。",
+              "evidence_event_ids": [],
+              "confidence": 0.86
+            },
+            {
+              "role": "werewolf",
+              "memory": "狼人白天投票应避免多名狼人在缺少独立公开证据时集中裸冲同一目标，可通过分票、轻踩队友或不同理由制造自然票型。",
+              "evidence_event_ids": [],
+              "confidence": 0.86
+            }
+          ],
+          "confidence": 0.72,
+          "metadata": {
+            "review_backend": "heuristic_backfill",
+            "fallback_reason": "JSONDecodeError: Expecting ',' delimiter: line 97 column 10 (char 3360)",
+            "source": "report_mistakes_and_recommendations"
+          },
+          "memory_bank_item_ids": [
+            "werewolf-9dc9e9b178b4",
+            "werewolf-8679dc35a72c",
+            "seer-3cd8e26ab9ad",
+            "witch-6dc80c760a38",
+            "hunter-1094ad8980d3",
+            "hunter-95fbe376c739",
+            "villager-5c22639a99cd",
+            "hunter-b71a221738c9",
+            "werewolf-d2f1746ecece"
+          ],
+          "backfill_metadata": {
+            "backfilled_at": "20260524_212332_441819",
+            "archive_path": "logs\\games\\20260524_185658_352050_game-20280523-1f94a3.json",
+            "previous_review_status": "failed",
+            "dry_run": false
+          }
+        }
+      ],
+      "requested_games": 3,
+      "completed_games": 3,
+      "memory_file": "data\\memory\\role_memory_evolved_r2.json",
+      "memory_snapshot": "data\\memory\\snapshots\\20260524_185658_460788_evolved_r2.json"
+    }
+  ],
+  "leaderboard": [
+    {
+      "version_id": "evolved_r1",
+      "promoted": true,
+      "overall": 82.75,
+      "vote_quality": 79.42,
+      "skill_quality": 81.51,
+      "mistakes_per_game": 0.67,
+      "villager_wins": 3,
+      "werewolf_wins": 0
+    },
+    {
+      "version_id": "evolved_r2",
+      "promoted": false,
+      "overall": 72.1,
+      "vote_quality": 57.65,
+      "skill_quality": 81.17,
+      "mistakes_per_game": 4.0,
+      "villager_wins": 0,
+      "werewolf_wins": 3
+    }
+  ],
+  "final_version": "evolved_r1",
+  "final_profiles": {
+    "Role.WEREWOLF": {
+      "role": "werewolf",
+      "version_id": "evolved_r1",
+      "prompt_name": "wolf_shadow_v2",
+      "prompt_summary": "进化版：伪装成谨慎好人，寻找神职，但早期偶尔跟票过重。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "白天不要直接暴露狼队视角。",
+        "优先攻击发言强势、可能带队的好人。",
+        "早期投票避免三狼集中裸冲同一好人；理由不足时可以分票、弃票、轻踩队友或选择另一个公开可疑目标。",
+        "狼队白天不要三狼集中裸冲同一个目标，除非已有公开理由。",
+        "夜晚优先处理公开跳预言家、强势归票者和被普遍信任的好人。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：早期避免多狼无理由集中裸冲同一目标，用公开逻辑分散票型。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "wolf_bluffing_and_pack_vote_discipline",
+        "last_reviewed_mistakes": 13
+      },
+      "metrics": {},
+      "promoted": true,
+      "parent_id": "initial"
+    },
+    "Role.SEER": {
+      "role": "seer",
+      "version_id": "evolved_r1",
+      "prompt_name": "seer_cautious_v2",
+      "prompt_summary": "进化版：重视隐藏身份，但查到狼后有时披露不足。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "前两天先积累查验信息，不要过早暴露。",
+        "发言中可以给出轻微站边，但不要把全部信息一次交出。",
+        "查到狼人后必须在白天明确报出查杀并带票。",
+        "如果已有金水，要用金水建立可信站边，不要只给模糊判断。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：查到狼人后在白天明确报出 P 号和查杀结论，并推动归票。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "inspection_disclosure_and_vote_leadership",
+        "last_reviewed_mistakes": 13
+      },
+      "metrics": {},
+      "promoted": true,
+      "parent_id": "initial"
+    },
+    "Role.WITCH": {
+      "role": "witch",
+      "version_id": "evolved_r1",
+      "prompt_name": "witch_conservative_v2",
+      "prompt_summary": "进化版：药水使用保守，毒药偶尔被情绪票影响。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "解药尽量留到关键轮次。",
+        "毒药需要结合发言和投票，不要只凭单点怀疑。",
+        "首夜优先救人以保留轮次。",
+        "毒药只优先给公开查杀或多轮高嫌疑目标，避免毒死强好人。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：毒药优先绑定公开查杀或多轮高嫌疑目标，缺少硬信息时保留。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "medicine_timing_and_poison_discipline",
+        "last_reviewed_mistakes": 13
+      },
+      "metrics": {},
+      "promoted": true,
+      "parent_id": "initial"
+    },
+    "Role.HUNTER": {
+      "role": "hunter",
+      "version_id": "evolved_r1",
+      "prompt_name": "hunter_patient_v2",
+      "prompt_summary": "进化版：倾向藏身份，开枪时容易保守。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "死亡时如果没有强逻辑，可以不开枪避免误伤。",
+        "发言以普通好人视角分析局势。",
+        "死亡开枪时优先带走公开查杀或投票链最高嫌疑。",
+        "白天发言跟随可信预言家信息，不做无依据反打。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。",
+        "复盘记忆：开枪优先选择公开查杀或投票链最高嫌疑，低置信度时可不开枪。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "shot_selection_from_public_evidence",
+        "last_reviewed_mistakes": 13
+      },
+      "metrics": {},
+      "promoted": true,
+      "parent_id": "initial"
+    },
+    "Role.VILLAGER": {
+      "role": "villager",
+      "version_id": "evolved_r1",
+      "prompt_name": "villager_basic_v2",
+      "prompt_summary": "进化版：根据公开发言投票，但归票能力不足。 已吸收复盘反思，降低随机性并强化阵营目标。",
+      "strategy_memory": [
+        "没有技能信息，只根据公开发言、投票和死亡信息推理。",
+        "不要假装拥有夜间信息。",
+        "出现明确查杀时优先围绕查杀归票。",
+        "用投票链和发言矛盾识别狼人，不做纯随机票。",
+        "复盘记忆：保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "parameters": {
+        "decision_mode": "llm_only",
+        "evolution_focus": "public_reasoning_and_vote_coordination",
+        "last_reviewed_mistakes": 13
+      },
+      "metrics": {},
+      "promoted": true,
+      "parent_id": "initial"
+    }
+  },
+  "requested_base_version": "latest",
+  "base_version": "evolved_r1",
+  "base_memory_file": "data\\memory\\role_memory_evolved_r1.json",
+  "baseline_report_sample": {
+    "game_id": "game-20270521-82aedd",
+    "winner": "villagers",
+    "scores": {
+      "overall": 83.42,
+      "speech_quality": 80.9,
+      "vote_quality": 79.25,
+      "skill_quality": 79.09,
+      "team_contribution": 76.78,
+      "mistake_penalty": 100.0
+    },
+    "role_scores": {
+      "werewolf": {
+        "average": 76.39,
+        "sample_count": 16.0
+      },
+      "seer": {
+        "average": 93.0,
+        "sample_count": 4.0
+      },
+      "witch": {
+        "average": 94.29,
+        "sample_count": 7.0
+      },
+      "hunter": {
+        "average": 100.0,
+        "sample_count": 4.0
+      },
+      "villager": {
+        "average": 100.0,
+        "sample_count": 12.0
+      }
+    },
+    "key_decisions": [
+      {
+        "day": 1,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 1,
+        "target_id": 2,
+        "public_text": "P1 已提交狼人夜间目标。",
+        "reason": "首夜无公开身份线索，选择存活非己玩家刀取"
+      },
+      {
+        "day": 1,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 3,
+        "target_id": 2,
+        "public_text": "P3 已提交狼人夜间目标。",
+        "reason": "首夜无公开身份线索，选择非狼队存活玩家开刀"
+      },
+      {
+        "day": 1,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 9,
+        "target_id": 2,
+        "public_text": "P9 已提交狼人夜间目标。",
+        "reason": "首夜选择非狼队友的存活玩家刀人，推进狼队阵营目标"
+      },
+      {
+        "day": 1,
+        "phase": "night_seer",
+        "type": "seer_inspect",
+        "actor_id": 4,
+        "target_id": 1,
+        "public_text": "P4 已完成查验。",
+        "reason": "首夜无额外公开信息，选择首验P1获取身份信息助力好人推理"
+      },
+      {
+        "day": 1,
+        "phase": "night_witch",
+        "type": "witch_action",
+        "actor_id": 6,
+        "target_id": 2,
+        "public_text": "P6 已完成女巫行动。",
+        "reason": "首夜优先使用解药，保留好人轮次"
+      },
+      {
+        "day": 1,
+        "phase": "day_vote",
+        "type": "exile",
+        "actor_id": null,
+        "target_id": 1,
+        "public_text": "白天投票结束，P1 被放逐。",
+        "reason": ""
+      },
+      {
+        "day": 2,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 3,
+        "target_id": 4,
+        "public_text": "P3 已提交狼人夜间目标。",
+        "reason": "P4公开起跳预言家且获得多数好人信任，是对狼队威胁最大的神职，优先刀除"
+      },
+      {
+        "day": 2,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 9,
+        "target_id": 4,
+        "public_text": "P9 已提交狼人夜间目标。",
+        "reason": "P4公开起跳预言家，是好人阵营逻辑核心，对狼队威胁最大，优先刀除"
+      },
+      {
+        "day": 2,
+        "phase": "night_seer",
+        "type": "seer_inspect",
+        "actor_id": 4,
+        "target_id": 2,
+        "public_text": "P4 已完成查验。",
+        "reason": "履行此前公开的后续查验计划，查验P2帮助好人排坑"
+      },
+      {
+        "day": 2,
+        "phase": "night_witch",
+        "type": "witch_action",
+        "actor_id": 6,
+        "target_id": null,
+        "public_text": "P6 已完成女巫行动。",
+        "reason": "无解药无法救助当夜被刀的P4，且当前无明确公开查杀的高嫌疑目标，保留毒药避免误毒好人"
+      },
+      {
+        "day": 2,
+        "phase": "day_vote",
+        "type": "exile",
+        "actor_id": null,
+        "target_id": 9,
+        "public_text": "白天投票结束，P9 被放逐。",
+        "reason": ""
+      },
+      {
+        "day": 3,
+        "phase": "night_wolf",
+        "type": "wolf_intent",
+        "actor_id": 3,
+        "target_id": 6,
+        "public_text": "P3 已提交狼人夜间目标。",
+        "reason": "P6公开跳女巫为明神职，优先刀神职推进屠神胜利"
+      },
+      {
+        "day": 3,
+        "phase": "night_witch",
+        "type": "witch_action",
+        "actor_id": 6,
+        "target_id": 3,
+        "public_text": "P6 已完成女巫行动。",
+        "reason": "我已公开跳明女巫身份，P3公开投票我，属于高嫌疑狼人目标，使用毒药毒杀"
+      }
+    ],
+    "mistakes": [],
+    "recommendations": {
+      "werewolf": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "seer": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "witch": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "hunter": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ],
+      "villager": [
+        "保留公开信息来源，发言中说明判断依据和投票计划。"
+      ]
+    },
+    "summary": "好人阵营获胜；综合评分 83.4。 本局识别关键失误 0 个，投票质量 79.2，技能质量 79.1。"
+  },
+  "memory_files": [
+    {
+      "version_id": "evolved_r1",
+      "latest_path": "data\\memory\\role_memory_evolved_r1.json",
+      "snapshot_path": "data\\memory\\snapshots\\20260524_181224_166916_evolved_r1.json"
+    },
+    {
+      "version_id": "evolved_r2",
+      "latest_path": "data\\memory\\role_memory_evolved_r2.json",
+      "snapshot_path": "data\\memory\\snapshots\\20260524_185658_460788_evolved_r2.json"
+    }
+  ],
+  "memory_bank_file": "data\\memory\\memory_bank.json",
+  "player_profiles_file": "data\\memory\\player_profiles.json",
+  "llm_provider": "ark",
+  "llm_model": null,
+  "memory_run_file": "data\\memory\\evolution_runs\\run_20260524_185658_465152_evolved_r1.json",
+  "latest_promoted_file": "data\\memory\\latest_promoted.json",
+  "review_backfills": [
+    {
+      "backfilled_at": "20260524_212332_526497",
+      "updated_reviews": 4
+    }
+  ]
+}

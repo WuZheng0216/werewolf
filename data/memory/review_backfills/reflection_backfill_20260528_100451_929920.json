@@ -1,0 +1,499 @@
+{
+  "created_at": "20260528_100448_842686",
+  "dry_run": false,
+  "ok_unwritten_backfilled": [
+    {
+      "action": "ok_candidates_to_memory_bank",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+      "history_index": 0,
+      "review_index": 0,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270521-27a078",
+      "archive_path": "logs\\games\\20260524_122521_458171_game-20270521-27a078.json",
+      "memory_bank_item_ids": [
+        "werewolf-1cc9bdada1b7",
+        "seer-d79dc0aa19c9",
+        "witch-c101bd120506",
+        "villager-de3d13dcf692"
+      ]
+    },
+    {
+      "action": "ok_candidates_to_memory_bank",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+      "history_index": 0,
+      "review_index": 4,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270525-0546b1",
+      "archive_path": "logs\\games\\20260524_132957_955582_game-20270525-0546b1.json",
+      "memory_bank_item_ids": [
+        "werewolf-64c1039146eb",
+        "witch-2967cb9aebb2",
+        "hunter-8ca3c8cfe527",
+        "villager-b9464bce0c80"
+      ]
+    },
+    {
+      "action": "ok_candidates_to_memory_bank",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+      "history_index": 1,
+      "review_index": 1,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280522-641ec1",
+      "archive_path": "logs\\games\\20260524_135536_142617_game-20280522-641ec1.json",
+      "memory_bank_item_ids": [
+        "werewolf-db3413f4ed8f",
+        "witch-1a0c2cda2ac7",
+        "villager-4ad48f6b0cf7"
+      ]
+    },
+    {
+      "action": "ok_candidates_to_memory_bank",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+      "history_index": 1,
+      "review_index": 2,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280523-054aa0",
+      "archive_path": "logs\\games\\20260524_140958_956970_game-20280523-054aa0.json",
+      "memory_bank_item_ids": [
+        "werewolf-2b563a642a7d",
+        "seer-daff7f1327b2",
+        "witch-d655b5a62082",
+        "villager-e714daee9768"
+      ]
+    },
+    {
+      "action": "ok_candidates_to_memory_bank",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+      "history_index": 1,
+      "review_index": 3,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280524-dfaaf9",
+      "archive_path": "logs\\games\\20260524_142156_055460_game-20280524-dfaaf9.json",
+      "memory_bank_item_ids": [
+        "seer-13c7d50de526",
+        "werewolf-bccdadb81afb",
+        "witch-7c653d218b71",
+        "villager-d744acf8c143"
+      ]
+    }
+  ],
+  "failed_reviews_backfilled": [
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_225719_955711_evolved_r2.json",
+      "history_index": 0,
+      "review_index": 0,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270521-9e6bbf",
+      "archive_path": "logs\\games\\20260524_214621_115612_game-20270521-9e6bbf.json",
+      "memory_bank_item_ids": [
+        "witch-1a5c285bd924",
+        "werewolf-485e81b6c699",
+        "witch-e530a5c9c7d1",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_225719_955711_evolved_r2.json",
+      "history_index": 0,
+      "review_index": 2,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270523-8f1d14",
+      "archive_path": "logs\\games\\20260524_221643_768301_game-20270523-8f1d14.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "evolution_run",
+      "source_path": "data\\memory\\evolution_runs\\run_20260524_225719_955711_evolved_r2.json",
+      "history_index": 1,
+      "review_index": 2,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280523-0ae4b4",
+      "archive_path": "logs\\games\\20260524_225719_883502_game-20280523-0ae4b4.json",
+      "memory_bank_item_ids": [
+        "werewolf-470edee4cbb1"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260524_161459_945522_game-20270521-1fbdd6.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270521-1fbdd6",
+      "archive_path": "logs\\games\\20260524_161459_945522_game-20270521-1fbdd6.json",
+      "memory_bank_item_ids": [
+        "seer-4c2170d613a4",
+        "werewolf-485e81b6c699",
+        "seer-9a3bd2894a9e",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260524_163601_326403_game-20270522-fb1ea4.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r1",
+      "game_id": "game-20270522-fb1ea4",
+      "archive_path": "logs\\games\\20260524_163601_326403_game-20270522-fb1ea4.json",
+      "memory_bank_item_ids": [
+        "werewolf-470edee4cbb1"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_083919_066469_game-20280521-c71d1f.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280521-c71d1f",
+      "archive_path": "logs\\games\\20260525_083919_066469_game-20280521-c71d1f.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_085328_377553_game-20280522-24d724.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280522-24d724",
+      "archive_path": "logs\\games\\20260525_085328_377553_game-20280522-24d724.json",
+      "memory_bank_item_ids": [
+        "witch-1a5c285bd924",
+        "werewolf-485e81b6c699",
+        "witch-e530a5c9c7d1",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_093539_993201_game-20280525-6b16ec.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280525-6b16ec",
+      "archive_path": "logs\\games\\20260525_093539_993201_game-20280525-6b16ec.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_104742_192500_game-20280522-143b7b.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280522-143b7b",
+      "archive_path": "logs\\games\\20260525_104742_192500_game-20280522-143b7b.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_112525_574760_game-20280524-82882e.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280524-82882e",
+      "archive_path": "logs\\games\\20260525_112525_574760_game-20280524-82882e.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_114632_213600_game-20280525-236edf.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280525-236edf",
+      "archive_path": "logs\\games\\20260525_114632_213600_game-20280525-236edf.json",
+      "memory_bank_item_ids": [
+        "seer-4c2170d613a4",
+        "werewolf-485e81b6c699",
+        "seer-9a3bd2894a9e",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_121224_276214_game-20280527-94242c.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280527-94242c",
+      "archive_path": "logs\\games\\20260525_121224_276214_game-20280527-94242c.json",
+      "memory_bank_item_ids": [
+        "witch-1a5c285bd924",
+        "seer-4c2170d613a4",
+        "werewolf-485e81b6c699",
+        "witch-e530a5c9c7d1",
+        "seer-9a3bd2894a9e",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_122420_258495_game-20280528-26426a.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280528-26426a",
+      "archive_path": "logs\\games\\20260525_122420_258495_game-20280528-26426a.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_133319_892081_game-20280529-804a65.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280529-804a65",
+      "archive_path": "logs\\games\\20260525_133319_892081_game-20280529-804a65.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_134504_713675_game-20280521-fb374b.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280521-fb374b",
+      "archive_path": "logs\\games\\20260525_134504_713675_game-20280521-fb374b.json",
+      "memory_bank_item_ids": [
+        "witch-1a5c285bd924",
+        "werewolf-485e81b6c699",
+        "witch-e530a5c9c7d1",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_134802_723237_game-20280530-62a2ab.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280530-62a2ab",
+      "archive_path": "logs\\games\\20260525_134802_723237_game-20280530-62a2ab.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_140646_158524_game-20280524-7149e7.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280524-7149e7",
+      "archive_path": "logs\\games\\20260525_140646_158524_game-20280524-7149e7.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c",
+        "witch-19d235829b57",
+        "villager-da3410232a98",
+        "hunter-b9efa696b7be"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_140748_579659_game-20290522-34a2d7.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r3",
+      "game_id": "game-20290522-34a2d7",
+      "archive_path": "logs\\games\\20260525_140748_579659_game-20290522-34a2d7.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_142457_791636_game-20290523-1f38b5.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r3",
+      "game_id": "game-20290523-1f38b5",
+      "archive_path": "logs\\games\\20260525_142457_791636_game-20290523-1f38b5.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_143815_421870_game-20280525-9a2f50.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280525-9a2f50",
+      "archive_path": "logs\\games\\20260525_143815_421870_game-20280525-9a2f50.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_173828_543573_game-20280529-3a1a6a.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r2",
+      "game_id": "game-20280529-3a1a6a",
+      "archive_path": "logs\\games\\20260525_173828_543573_game-20280529-3a1a6a.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_193949_020665_game-20290522-4b632b.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r3",
+      "game_id": "game-20290522-4b632b",
+      "archive_path": "logs\\games\\20260525_193949_020665_game-20290522-4b632b.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260525_233543_736139_game-20290525-3a6189.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r3",
+      "game_id": "game-20290525-3a6189",
+      "archive_path": "logs\\games\\20260525_233543_736139_game-20290525-3a6189.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260526_004342_925787_game-20290527-eeea2b.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r3",
+      "game_id": "game-20290527-eeea2b",
+      "archive_path": "logs\\games\\20260526_004342_925787_game-20290527-eeea2b.json",
+      "memory_bank_item_ids": [
+        "werewolf-485e81b6c699",
+        "werewolf-8679dc35a72c"
+      ]
+    },
+    {
+      "action": "manual_report_synthesis",
+      "source_kind": "archive",
+      "source_path": "logs\\games\\20260526_120628_522158_game-20300522-bdc538.json",
+      "history_index": null,
+      "review_index": null,
+      "version_id": "evolved_r4",
+      "game_id": "game-20300522-bdc538",
+      "archive_path": "logs\\games\\20260526_120628_522158_game-20300522-bdc538.json",
+      "memory_bank_item_ids": [
+        "werewolf-470edee4cbb1"
+      ]
+    }
+  ],
+  "missing_reviews_backfilled": [],
+  "skipped": [],
+  "updated_run_files": [
+    "data\\memory\\evolution_runs\\run_20260523_214800_236429_evolved_r1.json",
+    "data\\memory\\evolution_runs\\run_20260524_121034_040431_evolved_r1.json",
+    "data\\memory\\evolution_runs\\run_20260524_143815_930774_evolved_r1.json",
+    "data\\memory\\evolution_runs\\run_20260524_225719_955711_evolved_r2.json"
+  ],
+  "updated_archive_files": [
+    "logs\\games\\20260524_122521_458171_game-20270521-27a078.json",
+    "logs\\games\\20260524_132957_955582_game-20270525-0546b1.json",
+    "logs\\games\\20260524_135536_142617_game-20280522-641ec1.json",
+    "logs\\games\\20260524_140958_956970_game-20280523-054aa0.json",
+    "logs\\games\\20260524_142156_055460_game-20280524-dfaaf9.json",
+    "logs\\games\\20260524_161459_945522_game-20270521-1fbdd6.json",
+    "logs\\games\\20260524_163601_326403_game-20270522-fb1ea4.json",
+    "logs\\games\\20260524_214621_115612_game-20270521-9e6bbf.json",
+    "logs\\games\\20260524_221643_768301_game-20270523-8f1d14.json",
+    "logs\\games\\20260524_225719_883502_game-20280523-0ae4b4.json",
+    "logs\\games\\20260525_083919_066469_game-20280521-c71d1f.json",
+    "logs\\games\\20260525_085328_377553_game-20280522-24d724.json",
+    "logs\\games\\20260525_093539_993201_game-20280525-6b16ec.json",
+    "logs\\games\\20260525_104742_192500_game-20280522-143b7b.json",
+    "logs\\games\\20260525_112525_574760_game-20280524-82882e.json",
+    "logs\\games\\20260525_114632_213600_game-20280525-236edf.json",
+    "logs\\games\\20260525_121224_276214_game-20280527-94242c.json",
+    "logs\\games\\20260525_122420_258495_game-20280528-26426a.json",
+    "logs\\games\\20260525_133319_892081_game-20280529-804a65.json",
+    "logs\\games\\20260525_134504_713675_game-20280521-fb374b.json",
+    "logs\\games\\20260525_134802_723237_game-20280530-62a2ab.json",
+    "logs\\games\\20260525_140646_158524_game-20280524-7149e7.json",
+    "logs\\games\\20260525_140748_579659_game-20290522-34a2d7.json",
+    "logs\\games\\20260525_142457_791636_game-20290523-1f38b5.json",
+    "logs\\games\\20260525_143815_421870_game-20280525-9a2f50.json",
+    "logs\\games\\20260525_173828_543573_game-20280529-3a1a6a.json",
+    "logs\\games\\20260525_193949_020665_game-20290522-4b632b.json",
+    "logs\\games\\20260525_233543_736139_game-20290525-3a6189.json",
+    "logs\\games\\20260526_004342_925787_game-20290527-eeea2b.json",
+    "logs\\games\\20260526_120628_522158_game-20300522-bdc538.json"
+  ],
+  "counts": {
+    "ok_unwritten_backfilled": 5,
+    "failed_reviews_backfilled": 25,
+    "missing_reviews_backfilled": 0,
+    "updated_run_files": 4,
+    "updated_archive_files": 30,
+    "skipped": 0
+  }
+}
